@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model companies {
+  company_id   Int         @id @default(autoincrement())
+  company_name String      @db.VarChar(100)
+  sector       String      @db.VarChar(100)
+  loc_state    String      @db.Char(2)
+  home_prices  home_prices @relation(fields: [loc_state], references: [loc_state], onDelete: Cascade, map: "companies_ibfk_1")
+  jobs         jobs[]
+
+  @@index([loc_state], map: "loc_state")
+}
+
+model home_prices {
+  loc_state          String           @id @db.Char(2)
+  median_house_price Decimal          @db.Decimal(12, 2)
+  companies          companies[]
+  mortgage_rates     mortgage_rates[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model jobs {
+  job_id          Int       @id @default(autoincrement())
+  company_id      Int
+  job_title       String    @db.VarChar(100)
+  job_description String?   @db.Text
+  loc_city        String?   @db.VarChar(100)
+  loc_state       String    @db.Char(2)
+  min_salary      Decimal?  @db.Decimal(10, 2)
+  max_salary      Decimal?  @db.Decimal(10, 2)
+  avg_salary      Decimal?  @db.Decimal(10, 2)
+  is_hourly       Boolean
+  companies       companies @relation(fields: [company_id], references: [company_id], onDelete: Cascade, map: "jobs_ibfk_1")
+
+  @@index([company_id], map: "company_id")
+  @@index([loc_state, loc_city], map: "idx_jobs_state_city")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model mortgage_rates {
+  loc_state            String      @db.Char(2)
+  loan_term_years      Int
+  date_recorded        DateTime    @db.Date
+  annual_interest_rate Decimal     @db.Decimal(5, 2)
+  home_prices          home_prices @relation(fields: [loc_state], references: [loc_state], onDelete: Cascade, map: "mortgage_rates_ibfk_1")
+
+  @@id([loc_state, loan_term_years, date_recorded])
+}
+
+model user_info {
+  username      String @id @db.VarChar(20)
+  salt          String @db.Char(8)
+  password_hash Bytes  @db.Binary(64)
+}
