@@ -1,0 +1,21 @@
+.job-card {
+  border: 1px solid var(--grayed-item);
+}
+
+.job-view {
+  
+}
+
+.grayed {
+  color: var(--grayed-item);
+}
+
+#listings {
+  width: 25vw;
+}
+
+#wrapper {
+  margin: 24px;
+  border: 1px solid var(--grayed-item);
+  min-height: 700px;
+}

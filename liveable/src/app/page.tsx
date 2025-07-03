@@ -1,12 +1,13 @@
-import Link from 'next/link';
+import Search from './components/search';
 
 export default function Home() {
   return (
-    <main>
-      <h1>This is just a test fr fr.</h1>
-      <Link href='/example' className='underline'>
-        Example link.
-      </Link>
-    </main>
+    <div id="hero">
+      <div>
+        <h1>Welcome</h1>
+        <p>Get a job you unemployed </p>
+        <Search />
+      </div>
+    </div>
   );
 }
