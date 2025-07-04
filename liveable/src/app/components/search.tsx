@@ -1,11 +1,15 @@
-export default function Search() {
+import { InputSearch, MapPin } from 'iconoir-react';
+
+export default function SearchBar() {
   return (
-    <div className="search-form">
-        <form id="job-search">
-        <input type="search" placeholder="Job Title or Sector" />
-        <input type="search" placeholder="City or City, State"/>
+    <div className='search-form'>
+      <form id='job-search'>
+        <InputSearch id='search-icon' />
+        <input type='search' placeholder='Job title or sector' />
+        <MapPin id='pin-icon' />
+        <input type='search' placeholder='City, state, or both (City, ST)'/>
         <button>Search</button>
-        </form>
+      </form>
     </div>
   );
 }

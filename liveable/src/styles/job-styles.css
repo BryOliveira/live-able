@@ -2,8 +2,9 @@
   border: 1px solid var(--grayed-item);
 }
 
-.job-view {
-  
+#listings {
+  overflow: hidden scroll;
+  height: inherit;
 }
 
 .grayed {
@@ -11,11 +12,39 @@
 }
 
 #listings {
-  width: 25vw;
+  width: 33%;
 }
 
 #wrapper {
-  margin: 24px;
+  margin: 32px 160px;
   border: 1px solid var(--grayed-item);
-  min-height: 700px;
+  height: 700px;
+  display: flex;
+}
+
+#job-view {
+  width: 67%;
+  overflow: hidden scroll;
+  height: inherit;
+}
+
+#job-view > div {
+  margin: 32px;
+}
+
+.job-header, .job-subheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.desc p {
+  line-height: 2.25;
+}
+
+#bar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
 }

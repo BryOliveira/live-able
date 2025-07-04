@@ -7,10 +7,10 @@ export default function Navbar() {
       <nav>
         <Link href='/'>
           <Image 
-            src="/liveable-logo-transparent.png"
+            src='/liveable-logo-transparent.png'
             width={220}
             height={50}
-            alt="Liveable transparent logo"
+            alt='Liveable transparent logo'
           />
         </Link>
         <ul>
