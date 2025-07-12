@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import '@/styles/styles.css';
 import Navbar from './components/global/navbar';
 import Footer from './components/global/footer';
+import { Analytics } from "@vercel/analytics/next"
 
 const afacadFlux = Afacad_Flux({
   variable: '--font-afacad-flux',
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
+    <>
+      <Analytics />
       <html lang='en' className={`${afacadFlux.variable}`}>
         <body>
           <Navbar />
@@ -26,5 +29,6 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
           <Footer />
         </body>
       </html>
+    </>
   );
 }
