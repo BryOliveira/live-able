@@ -42,9 +42,11 @@ input, button {
 }
 
 input {
-  font-size: 16px;
-  width: 256px;
-  height: 48px;
+  font-size: 1rem;
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  padding: .6rem 0;
 }
 
 input:focus {
@@ -53,26 +55,108 @@ input:focus {
 
 .search-form {
   background-color: var(--background);
+  border: 1px solid var(--green-accent);
   border-radius: 12px;
-  border: 1px solid var(--foreground);
+  position: relative;
+  box-shadow: 0 2px 3px 0 var(--grayed-item);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-form form {
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .search-form input {
   background-color: var(--background);
-  border: none;
-  border-radius: 8px;
-  margin: 0 4px;
+  margin: 0 8px 0 0;
+  height: 100%;
+  padding-left: 8px;
+  margin-left: 8px;
 }
 
-button {
-  font-size: 20px;
-  background-color: var(--blue-accent);
-  border-radius: 8px;
-  padding: 4px 20px;
-  margin: 0 4px;
+#dropdown {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem .5rem;
+  position: absolute;
+  background-color: var(--nav-background);
+  border: 1px solid var(--grayed-item);
+  box-shadow: 0px 2px 2px var(--grayed-item);
+  margin-top: 2px;
+  border-radius: 2px;
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--fade);
+}
+
+#drop-parent:hover #dropdown {
+  visibility: visible;
+  opacity: 1;
+  transition: var(--fade);
+}
+
+#dropdown li {
+  padding: 0;
+  margin: .1rem;
+  line-height: .5;
+}
+
+nav > a {
+  border-style: inset;
+}
+
+.search-form input, nav > ul a, nav > a {
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: var(--fade);
+}
+
+.search-form input:focus, nav > ul a:hover, nav a:hover {
+  outline: none;
+  border-color: var(--green-accent);
+}
+
+.search-form button {
+  font-size: 1.25rem;
+  background-color: var(--green-accent);
+  height: 100%;
   cursor: pointer;
   color: var(--background);
+  width: auto;
+  padding: 0 16px;
   border: none;
+}
+
+#pin-icon, #search-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+#search-icon {
+  margin-left: 8px;
+}
+
+#pin-icon {
+  border-style: none none none solid;
+  border-color: var(--green-accent);
+  border-width: 1px;
+  padding-left: 8px;
+}
+
+button:hover {
+  background-color: #086942;
+  transition: var(--fade);
 }
 
 nav {
@@ -89,18 +173,18 @@ nav > * {
 nav a {
   text-decoration: none;
   color: var(--nav-foreground);
+  transition: var(--fade);
 }
 
 nav a:hover {
-  color: var(--blue-accent);
-  transition: var(--fade);
+  color: var(--green-accent);
 }
 
 nav ul {
   list-style: none;
   display: flex;
   gap: 24px;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 header {
@@ -123,4 +207,44 @@ footer > div {
   align-items: center;
   color: var(--grayed-item);
   margin: 3rem 0;
+}
+
+.autocomplete {
+  position: absolute;
+  top: calc(100% + 3px);
+  width: 120%;
+  left: 0;
+  right: 0;
+  border: 1px solid var(--grayed-item);
+  border-radius: 12px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+  background-color: var(--nav-background);
+  overflow: hidden;
+  z-index: 100000;
+  max-height: 200px;
+  transition: var(--fade)
+}
+
+.autocomplete ul {
+  list-style: none;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  color: var(--foreground);
+  max-height: 200px;
+}
+
+.autocomplete li {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.autocomplete li:last-child {
+  border-bottom: none;
+}
+
+.autocomplete li:hover {
+  color: var(--green-accent);
+  background-color: #f5f5f5;
 }

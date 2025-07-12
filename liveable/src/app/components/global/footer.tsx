@@ -5,18 +5,18 @@ export default function Footer() {
     <>
     <footer>
       <div>
-        <Image src="/plant-solo.png"
+        <Image src='/plant-solo.png'
           width={48}
           height={48}
-          alt="plant-image"
+          alt='plant-image'
         />
         <ul>
           <li>About Us</li>
           <li>Contact Us</li>
+          <li>Credits</li>
         </ul>
         <ul>
-          <li>Something Copyright &copy;</li>
-          <li>Pretty sure it's wrong. Liveable</li>
+          <li>&copy; 2025 Bryan Oliveira . All rights reserved.</li>
         </ul>
       </div>
     </footer>
