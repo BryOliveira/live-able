@@ -12,13 +12,6 @@
   --fade: .2s;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0A0908;
-    --foreground: #FBFEF9;
-  } 
-} */
-
 /* 
 Light Blue: 5AA9E6
 White: FBFEF9 
@@ -137,6 +130,7 @@ nav > a {
   width: auto;
   padding: 0 16px;
   border: none;
+  border-radius: 0 10px 10px 0;
 }
 
 #pin-icon, #search-icon {
@@ -222,7 +216,7 @@ footer > div {
   background-color: var(--nav-background);
   overflow: hidden;
   max-height: 200px;
-  transition: var(--fade)
+  transition: var(--fade);
 }
 
 .autocomplete ul {
@@ -248,3 +242,4 @@ footer > div {
   color: var(--green-accent);
   background-color: #f5f5f5;
 }
+

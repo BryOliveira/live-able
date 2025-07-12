@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-#hero > div > h1 {
+#hero h1 {
   font-size: 48px;
 }
 
@@ -30,4 +30,19 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  #hero {
+    text-align: center;
+  }
+
+  #hero > div {
+    height: 20vh;
+    width: 50vw;
+  }
+
+  #hero p {
+    font-size: 16px;
+  }
 }

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Afacad_Flux } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next"
+import { Viewport } from 'next';
 import '@/styles/globals.css';
 import '@/styles/styles.css';
+import '@/styles/mobile-globals.css'; 
 import Navbar from './components/global/navbar';
 import Footer from './components/global/footer';
-import { Analytics } from "@vercel/analytics/next"
 
 const afacadFlux = Afacad_Flux({
   variable: '--font-afacad-flux',
@@ -15,7 +17,14 @@ export const metadata: Metadata = {
   title: {
     template: 'Liveable | %s',
     default: 'Liveable'
-  }
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover'
 };
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
