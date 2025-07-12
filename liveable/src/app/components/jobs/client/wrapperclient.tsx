@@ -1,10 +1,11 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Listings from '../listings';
 import JobView from '../jobview';
+import { Job } from '@/lib/prisma';
 
-export default function WrapperClient({ jobs }: { jobs: any[] }) {
-  const [selectedJob, setSelectedJob] = useState(jobs[0] ?? null);
+export default function WrapperClient({ jobs }: { jobs: Job[] }): React.ReactNode {
+  const [selectedJob, setSelectedJob] = useState<Job | null>(jobs[0] ?? null);
 
   return (
     <div id='wrapper'>

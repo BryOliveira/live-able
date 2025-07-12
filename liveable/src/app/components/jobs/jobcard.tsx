@@ -1,24 +1,19 @@
-function formatSalary(salary: any, isHourly: boolean | undefined): string {
-  if (!salary && salary !== 0) return 'Not Specified';
+import { Job } from '@/lib/prisma';
 
-  let value = 0;
-  if (typeof salary === 'number') {
-    value = salary;
-  } else if (salary?.toNumber) {
-    value = salary.toNumber();
-  }
+function formatSalary(salary: number | null, isHourly: boolean | undefined): string {
+  if (!salary && salary !== 0) return 'Not Specified';
 
   let formatted = '';
   if (isHourly) {
-    formatted = `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / hour`;
+    formatted = `$${salary.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / hour`;
   } else {
-    const annual = (value * 1000).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const annual = (salary * 1000).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     formatted = `$${annual} annually`;
   }
   return formatted;
 }
 
-export default function JobCard({ job, onClick }: { job: any, onClick?: () => void }) {
+export default function JobCard({ job, onClick }: { job: Job, onClick?: () => void }): React.ReactNode {
   return (
     <div className='job-card' onClick={onClick}>
       <h2>{job?.job_title}</h2>

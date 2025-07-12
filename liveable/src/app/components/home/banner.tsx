@@ -1,4 +1,4 @@
-export default function Banner() {
+export default function Banner(): React.ReactNode {
   return (
     <div>
     

@@ -1,3 +1,5 @@
+import { Job } from './prisma';
+
 class TrieNode {
   children: Map<string, TrieNode> = new Map();
   suggestions: string[] = [];
@@ -39,10 +41,10 @@ export class Trie {
     return curr.suggestions
       .filter(suggestion => suggestion.toLowerCase().startsWith(prefix.toLowerCase()))
       .slice(0, maxResults);
-  } 
+  }
 }
 
-export function buildCareerTrie(jobs: any[]): Trie {
+export function buildCareerTrie(jobs: Job[]): Trie {
   const trie = new Trie();
   jobs.forEach(job => {
     trie.insert(job.job_title);
@@ -51,7 +53,7 @@ export function buildCareerTrie(jobs: any[]): Trie {
   return trie;
 }
 
-export function buildLocationTrie(jobs: any[]): Trie {
+export function buildLocationTrie(jobs: Job[]): Trie {
   const trie = new Trie();
   jobs.forEach(job => {
     trie.insert(`${job.loc_city}, ${job.loc_state}`);

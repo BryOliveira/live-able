@@ -1,9 +1,9 @@
 'use client';
-import { useState, useEffect, act } from 'react';
+import { useState, useEffect } from 'react';
 import { InputSearch, MapPin } from 'iconoir-react';
 import Autocomplete from '../autocomplete';
 
-export default function SearchClient() {
+export default function SearchClient(): React.ReactNode {
   const [careerQuery, setCareerQuery] = useState('');
   const [locationQuery, setLocationQuery] = useState('');
   const [careerSuggestions, setCareerSuggestions] = useState<string[]>([]);
@@ -14,7 +14,11 @@ export default function SearchClient() {
     try {
       const resp = await fetch(`/api/autocomplete/${type}?q=${encodeURIComponent(query)}`);
       const data = await resp.json();
-      type === 'career' ? setCareerSuggestions(data) : setLocationSuggestions(data);
+      if (type === 'career') {
+        setCareerSuggestions(data);
+      } else {
+        setLocationSuggestions(data);
+      }
     } catch (err) {
       console.error(`Error fetching ${type} suggestions:`, err);
     }

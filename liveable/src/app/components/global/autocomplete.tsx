@@ -1,4 +1,4 @@
-export default function Autocomplete({ suggestions }: { suggestions: string[] }) {
+export default function Autocomplete({ suggestions }: { suggestions: string[] }): React.ReactNode {
   return (
     <ul>
       {suggestions.map((suggestion, index) => (
