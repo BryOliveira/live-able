@@ -1,4 +1,4 @@
-import SearchBar from './components/search';
+import SearchBar from './components/global/search';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       </div>
       <div id='banner'>
         <h2>wha</h2>
-        <h2>there's</h2>
+        <h2>there&apos;s</h2>
         <h2>no</h2>
         <h2>way</h2>
       </div>

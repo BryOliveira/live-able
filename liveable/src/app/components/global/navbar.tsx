@@ -14,8 +14,14 @@ export default function Navbar() {
           />
         </Link>
         <ul>
-          <li><Link href='jobs'>Jobs</Link></li>
-          <li><Link href='tools'>Tools</Link></li>
+          <li><Link href='../jobs'>Jobs</Link></li>
+          <li id='drop-parent'>
+            <Link href=''>Tools</Link>
+            <ul id='dropdown'>
+              <li><Link href='../tools/calc'>Liveability Calculator</Link></li>
+              <li><Link href='../tools/compare'>Rent vs. Buy Comparison Tool</Link></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
