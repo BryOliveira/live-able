@@ -1,9 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { InputSearch, MapPin } from 'iconoir-react';
 import Autocomplete from '../autocomplete';
 
 export default function SearchClient(): React.ReactNode {
+  const router = useRouter();
   const [careerQuery, setCareerQuery] = useState('');
   const [locationQuery, setLocationQuery] = useState('');
   const [careerSuggestions, setCareerSuggestions] = useState<string[]>([]);
@@ -36,6 +38,25 @@ export default function SearchClient(): React.ReactNode {
     }, 100);
   };
 
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const params = new URLSearchParams();
+
+    if (careerQuery.trim()) {
+      params.append('career', careerQuery.trim());
+    }
+
+    if (locationQuery.trim()) {
+      params.append('location', locationQuery.trim());
+    }
+
+    const queryString = params.toString();
+    const url = queryString ? `/jobs?${queryString}` : '/jobs';
+
+    router.push(url);
+  }
+
   useEffect(() => {
     if (activeInput === 'career') {
       fetchSuggestions(careerQuery, 'career');
@@ -46,13 +67,12 @@ export default function SearchClient(): React.ReactNode {
 
   return (
     <div className='search-form'>
-      <form action='/jobs' method='GET'>
+      <form onSubmit={submitHandler}>
         <InputSearch id='search-icon' />
         <div className='input-wrapper'>
           <input 
             type='search' 
             id='career'
-            name='career'
             value={careerQuery} 
             onChange={(event) => setCareerQuery(event.target.value)} 
             onFocus={() => setActiveInput('career')}
@@ -76,7 +96,6 @@ export default function SearchClient(): React.ReactNode {
           <input 
             type='search' 
             id='location'
-            name='location'
             value={locationQuery}
             onChange={(event) => setLocationQuery(event.target.value)}
             onFocus={() => setActiveInput('location')}
