@@ -1,4 +1,5 @@
 import SearchBar from './components/global/search';
+import Banner from './components/home/banner';
 
 export default function Home() {
   return (
@@ -6,16 +7,11 @@ export default function Home() {
       <div id='hero'>
         <div>
           <h1>Welcome</h1>
-          <p>Get a job you unemployed </p>
+          <p>Find work where you can live, not just where you can afford.</p>
           <SearchBar />
         </div >
       </div>
-      <div id='banner'>
-        <h2>wha</h2>
-        <h2>there&apos;s</h2>
-        <h2>no</h2>
-        <h2>way</h2>
-      </div>
+      <Banner />
     </div>
   );
 }

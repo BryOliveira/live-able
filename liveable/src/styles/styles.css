@@ -29,7 +29,30 @@
 #banner {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  gap: 3rem;
+  text-align: center;
+}
+
+#banner h3 {
+  color: var(--green-accent)
+}
+
+.banner-prop {
+  height: 48px;
+  width: 48px;
+  color: var(--green-accent);
+  padding: .5rem;
+  transition: var(--fade);
+}
+
+.banner-prop:hover {
+  background-color: var(--green-accent);
+  color: var(--background);
+  border-radius: 40%;
+  transform: translateY(-4px);
+  transition: var(--fade);
 }
 
 @media screen and (max-width: 768px) {
@@ -44,5 +67,24 @@
 
   #hero p {
     font-size: 16px;
+  }
+
+  .banner-prop {
+    height: 32px;
+    width: 32px;
+  }
+
+  #banner {
+    gap: 1rem;
+    align-items: baseline;
+    padding: 1rem;
+  }
+
+  #banner h3 {
+    font-size: 16px;
+  }
+
+  #banner p {
+    font-size: 14px;
   }
 }
