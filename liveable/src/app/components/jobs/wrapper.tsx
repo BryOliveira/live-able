@@ -13,10 +13,16 @@ function serializeJob(job: Job): Job {
   };
 }
 
-export default async function Wrapper(): Promise<React.ReactElement> {
-  const jobs = await getJobs();
+interface WrapperProps {
+  searchParams: {
+    career?: string;
+    location?: string;
+  };
+}
 
+export default async function Wrapper({ searchParams }: WrapperProps): Promise<React.ReactElement> {
+  const jobs = await getJobs(searchParams);
   const serializedJobs = jobs.map(serializeJob);
 
   return <WrapperClient jobs={serializedJobs} />;
-}
+} 

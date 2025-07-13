@@ -1,4 +1,5 @@
 import prisma from '@/lib/db';
+import { Prisma } from '@prisma/client';
 import { Decimal } from '@prisma/client/runtime/library';
 
 export interface Company {
@@ -27,7 +28,11 @@ export interface Job {
   home_prices: HomePrice | null;
 }
 
-// Raw Prisma result interface
+export interface JobFilters {
+  career?: string;
+  location?: string;
+}
+
 interface PrismaJobResult {
   job_id: number;
   job_title: string;
@@ -50,8 +55,72 @@ interface PrismaJobResult {
   } | null;
 }
 
-export default async function getJobs(): Promise<Job[]> {
+function parseLocation(location: string): { city?: string; state?: string} {
+  const trimmed = location.trim();
+  if (trimmed.includes(',')) {
+    const args = trimmed.split(',').map(arg => arg.trim());
+    if (args.length >= 2) {
+      return {
+        city: args[0],
+        state: args[1]
+      }
+    }
+  }
+
+  if (trimmed.length === 2 && /^[A-Za-z]{2}$/.test(trimmed)) {
+    return { state: trimmed.toUpperCase() };
+  }
+
+  return { city: trimmed, state: trimmed };
+}
+
+export default async function getJobs(filters: JobFilters = {}): Promise<Job[]> {
+  const { career, location } = filters;
+
+  const whereClause: Prisma.jobsWhereInput = {};
+
+  if (career) {
+    whereClause.OR = [
+      { job_title: { contains: career } },
+      { companies: { sector: { contains: career } } }
+    ];
+  }
+
+  if (location) {
+    const { city, state } = parseLocation(location);
+    const locationConditions = [];
+    
+    if (city && state && city !== state) {
+      locationConditions.push({
+        AND: [
+          { loc_city: { contains: city } },
+          { loc_state: { contains: state } }
+        ]
+      });
+    } else if (state && !city) {
+      locationConditions.push({ loc_state: { contains: state } });
+    } else if (city) {
+      locationConditions.push(
+        { loc_city: { contains: city } },
+        { loc_state: { contains: city } }
+      );
+    }
+    
+    if (locationConditions.length > 0) {
+      if (whereClause.OR) {
+        whereClause.AND = [
+          { OR: whereClause.OR },
+          { OR: locationConditions }
+        ];
+        delete whereClause.OR;
+      } else {
+        whereClause.OR = locationConditions;
+      }
+    }
+  }
+
   const jobs = await prisma.jobs.findMany({
+    where: Object.keys(whereClause).length > 0 ? whereClause : undefined,
     include: {
       companies: true,
       home_prices: true

@@ -26,8 +26,8 @@ function formatPrice(price: number): string {
 export default function JobView({ job }: { job: Job | null }): React.ReactNode {
   if (!job) {
     return (
-      <div id='job-view'>
-        <p>Select a job to see details.</p>
+      <div id='no-job'>
+        <h2>No job selected.</h2>
       </div>
     );
   }

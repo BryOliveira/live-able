@@ -46,12 +46,13 @@ export default function SearchClient(): React.ReactNode {
 
   return (
     <div className='search-form'>
-      <form id='job-search'>
+      <form action='/jobs' method='GET'>
         <InputSearch id='search-icon' />
         <div className='input-wrapper'>
           <input 
             type='search' 
             id='career'
+            name='career'
             value={careerQuery} 
             onChange={(event) => setCareerQuery(event.target.value)} 
             onFocus={() => setActiveInput('career')}
@@ -62,30 +63,38 @@ export default function SearchClient(): React.ReactNode {
             <div className='autocomplete'>
               <Autocomplete
                 suggestions={careerSuggestions}
+                onSelect={(value: string) => {
+                  setCareerQuery(value);
+                  setActiveInput(null);
+                }}
               />
             </div>
           )}
         </div>
-          <MapPin id='pin-icon' />
-          <div className='input-wrapper'>
-            <input 
-              type='search' 
-              id='location' 
-              value={locationQuery}
-              onChange={(event) => setLocationQuery(event.target.value)}
-              onFocus={() => setActiveInput('location')}
-              onBlur={locationBlurHandler}
-              placeholder='City, ST, or ST' 
-            />
-            {activeInput === 'location' && (
-              <div className='autocomplete'>
-                <Autocomplete
-                  suggestions={locationSuggestions}
-                />
-              </div>
-            )}
+        <MapPin id='pin-icon' />
+        <div className='input-wrapper'>
+          <input 
+            type='search' 
+            id='location'
+            name='location'
+            value={locationQuery}
+            onChange={(event) => setLocationQuery(event.target.value)}
+            onFocus={() => setActiveInput('location')}
+            onBlur={locationBlurHandler}
+            placeholder='City, ST, or ST' 
+          />
+          {activeInput === 'location' && (
+            <div className='autocomplete'>
+              <Autocomplete
+                suggestions={locationSuggestions}
+                onSelect={(value: string) => {
+                  setLocationQuery(value);
+                  setActiveInput(null);
+                }}
+              />
+            </div>
+          )}
         </div>
-
         <button type='submit'>Search</button>
       </form>
     </div>

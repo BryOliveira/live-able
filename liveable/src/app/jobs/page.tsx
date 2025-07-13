@@ -5,13 +5,24 @@ import '@/styles/job-styles.css';
 
 export const metadata: Metadata = { title: 'Jobs' };
 
-export default function Home() {
+interface SearchParams {
+  career?: string;
+  location?: string;
+}
+
+export default async function JobsPage({ 
+  searchParams 
+}: { 
+  searchParams: Promise<SearchParams> 
+}) {
+  const resolvedSearchParams = await searchParams;
+  
   return (
     <div>
       <div id='bar-wrapper'>
         <SearchBar />
       </div>
-      <Wrapper />
+      <Wrapper searchParams={resolvedSearchParams} />
     </div>
   );
 }
