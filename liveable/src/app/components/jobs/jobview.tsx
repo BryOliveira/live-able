@@ -1,4 +1,5 @@
 import { Job } from '@/lib/prisma';
+import { formatCurrency } from '@/lib/utils/format';
 
 function formatSalaryRange(job: Job): string {
   const { min_salary, max_salary, is_hourly } = job;
@@ -11,16 +12,12 @@ function formatSalaryRange(job: Job): string {
   const max = max_salary ?? 0;
 
   if (is_hourly) {
-    return `$${min.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} - $${max.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / hour`;
+    return `$${formatCurrency(min)} - $${formatCurrency(max)})} / hour`;
   } else {
-    const minAnnual = (min * 1000).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const maxAnnual = (max * 1000).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const minAnnual = formatCurrency(min * 1000);
+    const maxAnnual = formatCurrency(max * 1000);
     return `$${minAnnual} - $${maxAnnual} annually`;
   }
-}
-
-function formatPrice(price: number): string {
-  return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 export default function JobView({ job }: { job: Job | null }): React.ReactNode {
@@ -33,9 +30,18 @@ export default function JobView({ job }: { job: Job | null }): React.ReactNode {
   }
   return (
     <div id='job-view'>
-      <div className='job-header'><h1>{job.job_title}</h1> <p>{formatSalaryRange(job)}</p></div>
-      <div className='job-subheader'><p><span className='greened'>Company:</span> {job.companies.company_name}</p><p><span className='greened'>Sector:</span> {job.companies.sector}</p></div>
-      <div className='job-subheader'><p><span className='greened'>Location:</span> {job.loc_city}, {job.loc_state}</p><p><span className='greened'>State&apos;s Median House Price:</span> ${job.home_prices ? formatPrice(job.home_prices.median_house_price) : 'N/A'}</p></div>
+      <div className='job-header'>
+        <h1>{job.job_title}</h1>
+         <p className='mobile'>{formatSalaryRange(job)}</p>
+      </div>
+      <div className='job-subheader'>
+        <p><span className='greened'>Company:</span> {job.companies.company_name}</p>
+        <p className='mobile'><span className='greened'>Sector:</span> {job.companies.sector}</p>
+      </div>
+      <div className='job-subheader'>
+        <p><span className='greened'>Location:</span> {job.loc_city}, {job.loc_state}</p>
+        <p className='mobile'><span className='greened'>State&apos;s Median House Price:</span> ${job.home_prices ? formatCurrency(job.home_prices.median_house_price) : 'N/A'}</p>
+      </div>
       <div className='desc'>
         <h2>Job Description:</h2>
         <p>{job.job_description}</p>

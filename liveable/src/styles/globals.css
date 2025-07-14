@@ -6,8 +6,10 @@
   --blue-accent: #5AA9E6;
   /* --blue-gradient: #5093c7; */
   --green-accent: #0A8754;
+  --green-hover: #086942;
   /* --green-gradient: #096d45; */
   --grayed-item: #999999;
+  --gray-hover: #fafafa;
   --font-sans: var(--font-afacad-flux);
   --fade: .2s;
 }
@@ -150,7 +152,7 @@ nav > a {
 }
 
 button:hover {
-  background-color: #086942;
+  background-color: var(--green-hover);
   transition: var(--fade);
 }
 
@@ -240,6 +242,6 @@ footer > div {
 
 .autocomplete li:hover {
   color: var(--green-accent);
-  background-color: #f5f5f5;
+  background-color: var(--gray-hover);
 }
 

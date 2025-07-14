@@ -2,8 +2,8 @@
   border: solid var(--grayed-item);
   border-width: 0 0 1px 0;
   cursor: pointer;
-  padding: 8px 12px;
-  margin-bottom: -1px;
+  padding: 12px 12px;
+  transition: var(--fade);
 }
 
 .job-card:last-child {
@@ -16,6 +16,11 @@
 
 .job-card:hover > h2 {
   color: var(--green-accent);
+  transition: var(--fade);
+}
+
+.job-card:hover {
+  background-color: var(--gray-hover);
   transition: var(--fade);
 }
 
@@ -94,6 +99,10 @@
     max-width: 90vw;
   }
 
+  .mobile {
+    text-align: right;
+  }
+
   @media screen and (max-width: 768px) {
     #wrapper {
       flex-direction: column;
@@ -123,6 +132,9 @@
 
     #job-view h1 {
       font-size: 24px;
+    }
+
+    .mobile {
     }
   }
 }

@@ -1,17 +1,5 @@
 import { Job } from '@/lib/prisma';
-
-function formatSalary(salary: number | null, isHourly: boolean | undefined): string {
-  if (!salary && salary !== 0) return 'Not Specified';
-
-  let formatted = '';
-  if (isHourly) {
-    formatted = `$${salary.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / hour`;
-  } else {
-    const annual = (salary * 1000).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    formatted = `$${annual} annually`;
-  }
-  return formatted;
-}
+import { formatSalary } from '@/lib/utils/format';
 
 export default function JobCard({ job, onClick }: { job: Job, onClick?: () => void }): React.ReactNode {
   return (

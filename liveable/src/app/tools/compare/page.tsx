@@ -1,5 +1,6 @@
-export default function Home() {
+export default function Comparison() {
   return (
-      <></>
+    <div>
+    </div>
   );
 }
