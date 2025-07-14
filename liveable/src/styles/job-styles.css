@@ -2,7 +2,7 @@
   border: solid var(--grayed-item);
   border-width: 0 0 1px 0;
   cursor: pointer;
-  padding: 12px 12px;
+  padding: 12px;
   transition: var(--fade);
 }
 
@@ -12,6 +12,10 @@
 
 #listings:has(.job-card:nth-child(8)) .job-card:last-child {
   border-bottom: none;
+}
+
+.job-card h2 {
+  line-height: 1;
 }
 
 .job-card:hover > h2 {
