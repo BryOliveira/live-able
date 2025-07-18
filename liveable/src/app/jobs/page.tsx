@@ -2,13 +2,9 @@ import type { Metadata } from 'next';
 import SearchBar from '../components/global/search';
 import Wrapper from '../components/jobs/wrapper';
 import '@/styles/job-styles.css';
+import { SearchParams } from '@/lib/utils/forms';
 
-export const metadata: Metadata = { title: 'Jobs' };
-
-interface SearchParams {
-  career?: string;
-  location?: string;
-}
+// export const metadata: Metadata = { title: 'Jobs' };
 
 export default async function JobsPage({ 
   searchParams 

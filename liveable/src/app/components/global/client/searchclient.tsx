@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { InputSearch, MapPin } from 'iconoir-react';
 import Autocomplete from '../autocomplete';
+import { stateAbbreviations } from '@/lib/states';
 
 export default function SearchClient(): React.ReactNode {
   const router = useRouter();
@@ -48,7 +49,18 @@ export default function SearchClient(): React.ReactNode {
     }
 
     if (locationQuery.trim()) {
-      params.append('location', locationQuery.trim());
+      const trimmedQuery = locationQuery.trim();
+      
+      const stateEntry = Object.entries(stateAbbreviations).find(
+        ([fullName]) => fullName.toLowerCase() === trimmedQuery.toLowerCase()
+      );
+
+      if (stateEntry) {
+        params.append('location', stateEntry[1]);
+      }
+      else {
+        params.append('location', trimmedQuery);
+      }
     }
 
     const queryString = params.toString();

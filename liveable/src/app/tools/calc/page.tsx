@@ -1,17 +1,10 @@
-import CalcClient from '@/app/components/tools/client/calcclient';
-import CalcGraph from '@/app/components/tools/client/calcgraph';
+// Adjust the import path and extension if needed
+import CalcClient from '@/app/components/tools/calc/client/calcclient';
 
 export default function CalcPage() {
   return (
-    <main className='tool-content'>
-      <h1>Liveability Calculator</h1>
-      <div className='tool-wrapper'>
-        <CalcClient />
-        <div className='calc-graph-wrapper'>
-          <CalcGraph />
-          <CalcGraph />
-        </div>
-      </div>
-    </main>
+    <div className='calc-wrapper'>
+      <CalcClient />
+    </div>
   );
 }

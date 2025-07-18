@@ -62,7 +62,7 @@ function parseLocation(location: string): { city?: string; state?: string} {
     if (args.length >= 2) {
       return {
         city: args[0],
-        state: args[1]
+        state: args[1].toUpperCase() 
       }
     }
   }
@@ -71,7 +71,7 @@ function parseLocation(location: string): { city?: string; state?: string} {
     return { state: trimmed.toUpperCase() };
   }
 
-  return { city: trimmed, state: trimmed };
+  return { city: trimmed, state: trimmed.toUpperCase() };
 }
 
 export default async function getJobs(filters: JobFilters = {}): Promise<Job[]> {

@@ -1,24 +1,5 @@
 import { Job } from '@/lib/prisma';
-import { formatCurrency } from '@/lib/utils/format';
-
-function formatSalaryRange(job: Job): string {
-  const { min_salary, max_salary, is_hourly } = job;
-
-  if ((min_salary === undefined || min_salary === null) && (max_salary === undefined || max_salary === null)) {
-    return 'Not Specified';
-  }
-
-  const min = min_salary ?? 0;
-  const max = max_salary ?? 0;
-
-  if (is_hourly) {
-    return `$${formatCurrency(min)} - $${formatCurrency(max)})} / hour`;
-  } else {
-    const minAnnual = formatCurrency(min * 1000);
-    const maxAnnual = formatCurrency(max * 1000);
-    return `$${minAnnual} - $${maxAnnual} annually`;
-  }
-}
+import { formatCurrency, formatSalaryRange } from '@/lib/utils/format';
 
 export default function JobView({ job }: { job: Job | null }): React.ReactNode {
   if (!job) {

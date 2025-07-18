@@ -1,9 +1,11 @@
 .job-card {
+  display: flex;
   border: solid var(--grayed-item);
   border-width: 0 0 1px 0;
   cursor: pointer;
   padding: 12px;
   transition: var(--fade);
+  justify-content: space-between;
 }
 
 .job-card:last-child {
