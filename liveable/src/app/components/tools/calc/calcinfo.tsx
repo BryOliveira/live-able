@@ -1,3 +1,7 @@
 export default function CalcInfo() {
-  return ();
+  return (
+    <div>
+      
+    </div>
+  );
 }

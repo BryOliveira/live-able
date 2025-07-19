@@ -22,8 +22,13 @@
 
   .search-form {
     margin: 0;
-    width: 65vw;
+    width: 68vw;
   }
+
+  .search-form input {
+    font-size: 12px;
+    padding: 0;
+  }  
 
   .autocomplete {
     width: fit-content;

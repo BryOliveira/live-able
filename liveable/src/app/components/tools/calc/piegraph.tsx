@@ -1,3 +1,7 @@
 export default function PieGraph() {
-  return ();
+  return (
+    <div>
+      
+    </div>
+  );
 }
