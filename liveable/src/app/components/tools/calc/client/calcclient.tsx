@@ -1,11 +1,11 @@
 'use client';
 import { useState } from 'react';
-import CalcFormWrapper from './clientform';
-import GraphWrapper from './calcgraph';
+import CalcFormWrapper, { defaultValues } from './clientform';
+import GraphWrapper from '../graphwrapper';
 import { CalcForm } from '@/lib/utils/forms';
 
 export default function CalcClient(): React.ReactNode {
-  const [formData, setFormData] = useState<CalcForm>();
+  const [formData, setFormData] = useState<CalcForm>(defaultValues);
 
   const submitHandler = (data: CalcForm) => {
     setFormData(data);
@@ -14,7 +14,7 @@ export default function CalcClient(): React.ReactNode {
   return (
     <div className='calc-client-wrapper'>
       <CalcFormWrapper onSubmit={submitHandler} />
-      <GraphWrapper />
+      <GraphWrapper formResults={formData}/>
     </div>
   );
 }

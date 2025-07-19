@@ -6,7 +6,7 @@ interface CalcFormProps {
   onSubmit: (data: CalcForm) => void;
 } 
 
-const defaultValues = {
+export const defaultValues = {
     homePrice: 427000, // median us house cost
     downPayment: 75000, // 18% of homePrice, median down payment in the US
     salaryType: 'Annual',
