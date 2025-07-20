@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { use, useEffect, useRef } from 'react';
 import { Chart as ChartJS, ArcElement, Title, Legend, ChartOptions } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import { Chart, Doughnut } from 'react-chartjs-2';
 import { formatCurrency } from '@/lib/utils/format';
 
 interface graphProps {
@@ -17,10 +17,7 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
     datasets: [
       {
         data: [monthlySalary - monthlyCost, monthlyCost],
-        backgroundColor: [
-          '#0A8754',
-          '#5AA9E6'
-        ]
+        backgroundColor: ['#0A8754', '#5AA9E6']
       }
     ]
   };
@@ -41,6 +38,7 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
       const centerText = `$${formatCurrency(monthlySalary - monthlyCost)} / mo`;
       ctx.fillText('Adjusted Gross Income:', centerX, centerY - 12);
       ctx.fillText(centerText, centerX, centerY + 12);
+      ctx.restore();
     }
   }
 
@@ -61,10 +59,15 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
     },
     cutout: '80%'
   };
-
+  
   return (
     <div className='graph'>
-      <Doughnut data={data} options={options} plugins={[centerTextPlugin]}/>
+      <Doughnut 
+        data={data} 
+        options={options} 
+        plugins={[centerTextPlugin]}
+        key={`${monthlySalary}-${monthlyCost}`}
+      />
     </div>
   );
 }
