@@ -78,7 +78,7 @@ h1 {
   grid-template-columns: .8fr 2fr;
   gap: 3rem;
   align-items: start;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .form-wrapper {

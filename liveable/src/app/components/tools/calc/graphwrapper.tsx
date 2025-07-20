@@ -31,7 +31,7 @@ export default function GraphWrapper({ formResults }: formResultsProps): React.R
           </div>
           <div id='legend'>
             <h3>Legend</h3>
-            <p><CircleIcon id='cost-color' weight='fill' size={32} /> Monthly Cost</p>
+            <p><CircleIcon id='cost-color' weight='fill' size={32} /> Monthly Mortgage Cost</p>
             <p><CircleIcon id='income-color' weight='fill' size={32} /> Monthly Adjusted Income</p>
           </div>
           <div className='tip-container'>

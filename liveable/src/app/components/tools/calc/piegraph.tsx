@@ -13,9 +13,8 @@ ChartJS.register(ArcElement, Title, Legend, Tooltip);
 
 export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: graphProps): React.ReactNode {
   const data = {
-    labels: ['AGI', 'Net Income'],
+    labels: ['AGI', 'Mortgage Cost'],
     datasets: [{
-      label: 'Amount',
       data: [monthlySalary - monthlyCost, monthlyCost],
       backgroundColor: ['#0A8754', '#5AA9E6']
     }]
@@ -30,7 +29,7 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
       const centerY = chart.getDatasetMeta(0).data[0].y;
 
       ctx.save();
-      ctx.font = '700 24px Afacad Flux';
+      ctx.font = '700 24px Afacad Flux, Arial, sans-serif';
       ctx.fillStyle = '#0A8754';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -46,7 +45,7 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
     plugins: {
       title: {
         font: {
-          family: 'Afacad Flux',
+          family: 'Afacad Flux, Arial, sans-serif',
           size: 24
         },
         display: true,
@@ -55,6 +54,31 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
       legend: {
         display: false
       },
+      tooltip: {
+        backgroundColor: '#f5fafa',
+        displayColors: false,
+        titleColor: 'black',
+        bodyColor: 'black',
+        borderWidth: 1,
+        borderColor: (context) => {
+          const dataIndex = context.tooltip.dataPoints[0].dataIndex;
+          const colors = context.tooltip.dataPoints[0].dataset.backgroundColor as string[];
+          return colors[dataIndex];
+        },
+        callbacks: {
+          label: (context) => {
+            return `$${formatCurrency(context.parsed)}`;
+          }
+        },
+        titleFont: {
+          family: 'Afacad Flux, Arial, sans-serif',
+          size: 20
+        },
+        bodyFont: {
+          family: 'Afacad Flux, Arial, sans-serif',
+          size: 16
+        },
+      }
     },
     cutout: '80%'
   };
