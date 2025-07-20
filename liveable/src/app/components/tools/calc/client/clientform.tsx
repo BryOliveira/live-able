@@ -73,7 +73,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
         </div>
 
         <div className='form-group select'>
-           <label htmlFor='salary-type'>Salary Type: </label>
+           <label htmlFor='salary-type'>Salary Type</label>
            <select id='salary-type'>
              <option value='annual'>Annual</option>
              <option value='hourly'>Hourly</option>
@@ -131,7 +131,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
         </div>
         
         <div className='form-group'>
-          <label htmlFor='interest-rate'>Interest Rate: </label>
+          <label htmlFor='interest-rate'>Interest Rate</label>
           <div className='input-with-symbol'>
             <input 
               required 

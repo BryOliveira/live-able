@@ -38,6 +38,7 @@
 
 .select {
   display: flex;
+  flex-direction: row!important;
   justify-content: space-between;
 }
 
@@ -62,12 +63,27 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.calc-client-wrapper {
-  display: flex;
+h1 {
+  text-align: left;
+  margin: 1rem 0;
 }
 
-.calc-client-wrapper > div {
-  min-width: 40vw;
+.calc-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.calc-client-wrapper {
+  display: grid;
+  grid-template-columns: .8fr 2fr;
+  gap: 3rem;
+  align-items: start;
+  margin: 2rem 0;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .calc-form {
@@ -78,6 +94,13 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 .calc-form label {
   font-size: 1.2rem;
+  font-weight: 450;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .calc-form button {
@@ -85,10 +108,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   color: var(--background);
   border: none;
   border-radius: 8px;
-  font-size: 1.5rem;
-  padding: 1rem 1rem;
+  font-size: 1.4rem;
+  padding: 1rem;
   cursor: pointer;
   transition: var(--fade);
+  margin-top: .5rem;
 }
 
 .calc-form button:hover {
@@ -107,6 +131,15 @@ input:invalid {
   background-color: #ffd2d2;
 }
 
+.graph-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-wrapper h2 {
+  margin-bottom: 1rem;
+}
+
 .graph {
   width: 350px;
   height: 350px;
@@ -122,19 +155,12 @@ input:invalid {
 
 .graph-wrapper > div {
   display: flex;
-}
-
-#graph-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 2rem;
-  font-size: 24px;
-  font-weight: 500;
 }
 
 #graph-container > div {
   display: flex;
+  gap: 1rem;
 }
 
 #info {
@@ -146,15 +172,21 @@ input:invalid {
 
 #info h3 {
   font-size: 28px;
+  margin-bottom: 0.5rem;
 }
 
 #info div:first-child p {
   font-size: 24px;
 }
 
+#info div:first-child {
+  color: var(--blue-accent)
+}
+
 #legend {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
 }
 
 #legend > p {
@@ -162,6 +194,45 @@ input:invalid {
   align-items: center;
   gap: .3rem;
   font-size: 18px;
+}
+
+.tip-container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-self: flex-end;
+  position: relative;
+}
+
+#question {
+  color: var(--foreground);
+}
+
+.tip-container .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  width: 300px;
+  top: 110%;
+  right: 0;
+  background-color: var(--gray-hover);
+  border: 2px solid var(--grayed-item);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  transition: var(--fade);
+}
+
+.tip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transition: var(--fade);
+}
+
+.tooltip p {
+  margin: .5rem 0;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 768px) {

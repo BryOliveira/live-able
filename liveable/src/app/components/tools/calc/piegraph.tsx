@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Title, Legend, ChartOptions } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Title, Legend, ChartOptions, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { formatCurrency } from '@/lib/utils/format';
 
@@ -9,17 +9,16 @@ interface graphProps {
   graphLabel: string
 }
 
-ChartJS.register(ArcElement, Title, Legend);
+ChartJS.register(ArcElement, Title, Legend, Tooltip);
 
 export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: graphProps): React.ReactNode {
   const data = {
-    labels: ['Net Income', 'Principal & Interest'],
-    datasets: [
-      {
-        data: [monthlySalary - monthlyCost, monthlyCost],
-        backgroundColor: ['#0A8754', '#5AA9E6']
-      }
-    ]
+    labels: ['AGI', 'Net Income'],
+    datasets: [{
+      label: 'Amount',
+      data: [monthlySalary - monthlyCost, monthlyCost],
+      backgroundColor: ['#0A8754', '#5AA9E6']
+    }]
   };
 
   const centerTextPlugin = {
@@ -32,7 +31,7 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
 
       ctx.save();
       ctx.font = '700 24px Afacad Flux';
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = '#0A8754';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       const centerText = `$${formatCurrency(monthlySalary - monthlyCost)} / mo`;
