@@ -1,6 +1,6 @@
-import React, { use, useEffect, useRef } from 'react';
+import React from 'react';
 import { Chart as ChartJS, ArcElement, Title, Legend, ChartOptions } from 'chart.js';
-import { Chart, Doughnut } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import { formatCurrency } from '@/lib/utils/format';
 
 interface graphProps {

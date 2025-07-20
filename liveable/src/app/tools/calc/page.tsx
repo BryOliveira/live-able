@@ -1,6 +1,9 @@
 // Adjust the import path and extension if needed
 import CalcClient from '@/app/components/tools/calc/client/calcclient';
 import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = { title: 'Calculator' };
 
 export default function CalcPage(): React.ReactNode {
   return (

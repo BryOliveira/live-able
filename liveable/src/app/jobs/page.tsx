@@ -4,7 +4,7 @@ import Wrapper from '../components/jobs/wrapper';
 import '@/styles/job-styles.css';
 import { SearchParams } from '@/lib/utils/forms';
 
-// export const metadata: Metadata = { title: 'Jobs' };
+export const metadata: Metadata = { title: 'Jobs' };
 
 export default async function JobsPage({ 
   searchParams 
