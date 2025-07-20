@@ -42,7 +42,7 @@ export default function GraphWrapper({ formResults }: formResultsProps): React.R
               </p>
               <p>
                 Note: Calculator only takes into account mortgage cost, does not include income tax,
-                property tax, mortgage insurance, homeowner's insurance, etc.
+                property tax, mortgage insurance, homeowner&apos;s insurance, etc.
               </p>
               <p>
                 Hourly Salary assumes 40 workhours per week, 4 workweeks per month.
