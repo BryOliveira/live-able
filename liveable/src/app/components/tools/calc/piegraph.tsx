@@ -1,14 +1,15 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Title, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Title, Legend, ChartOptions } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { formatCurrency } from '@/lib/utils/format';
 
 interface graphProps {
   monthlySalary: number, 
   monthlyCost: number, 
-  graphLabel: string
+  graphLabel: string,
 }
 
-ChartJS.register(ArcElement, Title, Legend);
+ChartJS.register(ArcElement, Title, Legend );
 
 export default function PieGraph({monthlySalary, monthlyCost, graphLabel}: graphProps): React.ReactNode {
   const data = {
@@ -19,29 +20,36 @@ export default function PieGraph({monthlySalary, monthlyCost, graphLabel}: graph
         data: [monthlySalary - monthlyCost, monthlyCost],
         backgroundColor: [
           '#0A8754',
-          '#999999'
+          '#5AA9E6'
         ]
       }
     ]
   };
 
-  const options = {
-  responsive: true,
-  plugins: {
-    title: {
-      display: true,
-      text: graphLabel
+  const options: ChartOptions<'doughnut'> = {
+    responsive: true,
+    plugins: {
+      title: {
+        font: {
+          family: 'Afacad Flux',
+          size: 24
+        },
+        display: true,
+        text: graphLabel
+      },
+      legend: {
+        display: false
+      }
     },
-    legend: {
-      display: false
-    }
-  },
-  cutout: '80%'
-};
+    cutout: '80%'
+  };
 
   return (
-    <div className='graph'>
-      <Doughnut data={data} options={options}/>
+    <div className='captioned-graph'>
+      <div className='graph'>
+        <Doughnut data={data} options={options}/>
+      </div>
+      <p>${formatCurrency(monthlySalary - monthlyCost)}</p>
     </div>
   );
 }

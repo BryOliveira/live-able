@@ -48,6 +48,7 @@
   font-size: 1rem;
   position: right;
   transition: var(--fade);
+  border-color: var(--grayed-item);
 }
 
 .select > select:focus {
@@ -107,6 +108,46 @@ input:invalid {
 }
 
 .graph {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
+}
+
+.graph-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graph-wrapper > div {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.legend > div {
+  min-width: 25px;
+  min-height: 25px;
+}
+
+.captioned-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .calc-client-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

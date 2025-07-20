@@ -50,6 +50,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
               type='text' 
               min='0'
               placeholder='Enter home price'
+              defaultValue={defaultValues.homePrice}
               onChange={(event) => inputChangeHandler('homePrice', parseInputValue(event.target.value))}
             />
           </div>
@@ -65,6 +66,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
               type='text' 
               min='0' 
               placeholder='Enter down payment' 
+              defaultValue={defaultValues.downPayment}
               onChange={(event) => inputChangeHandler('downPayment', parseInputValue(event.target.value))}
             />
           </div>
@@ -88,6 +90,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
               type='text' 
               min='0' 
               placeholder='Enter minimum salary' 
+              defaultValue={defaultValues.minSalary}
               onChange={(event) => inputChangeHandler('minSalary', parseInputValue(event.target.value))}
             />
           </div>
@@ -103,6 +106,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
               type='text' 
               min='0' 
               placeholder='Enter maximum salary' 
+              defaultValue={defaultValues.maxSalary}
               onChange={(event) => inputChangeHandler('maxSalary', parseInputValue(event.target.value))}
             />
           </div>
@@ -118,6 +122,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
               min='0' 
               max='100'
               placeholder='Enter length of term' 
+              defaultValue={defaultValues.loanTerm}
               onChange={(event) => inputChangeHandler('loanTerm', parseInputValue(event.target.value))}
               step='1' 
             />
@@ -134,6 +139,7 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
               type='text' 
               min='0 ' 
               placeholder='Enter interest rate' 
+              defaultValue={defaultValues.interestRate}
               onChange={(event) => inputChangeHandler('interestRate', parseInputValue(event.target.value))}  
             />
             <span className='input-suffix'>%</span>
