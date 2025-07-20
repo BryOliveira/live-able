@@ -73,11 +73,14 @@ export default function CalcFormWrapper({ onSubmit }: CalcFormProps): React.Reac
         </div>
 
         <div className='form-group select'>
-           <label htmlFor='salary-type'>Salary Type</label>
-           <select id='salary-type'>
-             <option value='annual'>Annual</option>
-             <option value='hourly'>Hourly</option>
-           </select>
+          <label htmlFor='salary-type'>Salary Type</label>
+          <select 
+            id='salary-type'
+            onChange={(event) => inputChangeHandler('salaryType' , event.target.value)}
+          >
+            <option value='annual'>Annual</option>
+            <option value='hourly'>Hourly</option>
+          </select>
         </div>
          
         <div className='form-group'>

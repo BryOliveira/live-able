@@ -11,8 +11,8 @@ export interface formResultsProps {
  
 export default function GraphWrapper({ formResults }: formResultsProps): React.ReactNode {
   const monthlyCost = Tool.calculateMortgage(formResults);
-  const maxIncome = Tool.annualToMonthly(formResults.maxSalary);
-  const minIncome = Tool.annualToMonthly(formResults.minSalary);
+  const minIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.minSalary) : Tool.annualToMonthly(formResults.minSalary);
+  const maxIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.maxSalary) : Tool.annualToMonthly(formResults.maxSalary);
   
   return (
     <div className='graph-wrapper'>
@@ -41,8 +41,11 @@ export default function GraphWrapper({ formResults }: formResultsProps): React.R
                 (Monthly Gross Income - Monthly Mortgage Cost)
               </p>
               <p>
-                Note: Calculator only takes into account mortgage cost, does not include property tax, 
-                mortgage insurance, homeowner's insurance, etc.
+                Note: Calculator only takes into account mortgage cost, does not include income tax,
+                property tax, mortgage insurance, homeowner's insurance, etc.
+              </p>
+              <p>
+                Hourly Salary assumes 40 workhours per week, 4 workweeks per month.
               </p>
             </span>
           </div>
