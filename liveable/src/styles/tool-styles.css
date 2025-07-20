@@ -108,40 +108,60 @@ input:invalid {
 }
 
 .graph {
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
 }
 
-.graph-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#cost-color {
+  fill: var(--blue-accent);
+}
+
+#income-color {
+  fill: var(--green-accent);
 }
 
 .graph-wrapper > div {
   display: flex;
-  gap: 3rem;
+}
+
+#graph-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 2rem;
+  font-size: 24px;
   font-weight: 500;
+}
+
+#graph-container > div {
+  display: flex;
+}
+
+#info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#info h3 {
+  font-size: 28px;
+}
+
+#info div:first-child p {
   font-size: 24px;
 }
 
-.legend {
+#legend {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
-.legend > div {
-  min-width: 25px;
-  min-height: 25px;
-}
-
-.captioned-graph {
+#legend > p {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: .3rem;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 768px) {

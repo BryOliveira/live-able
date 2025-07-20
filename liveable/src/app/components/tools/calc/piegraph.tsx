@@ -6,17 +6,16 @@ import { formatCurrency } from '@/lib/utils/format';
 interface graphProps {
   monthlySalary: number, 
   monthlyCost: number, 
-  graphLabel: string,
+  graphLabel: string
 }
 
-ChartJS.register(ArcElement, Title, Legend );
+ChartJS.register(ArcElement, Title, Legend);
 
-export default function PieGraph({monthlySalary, monthlyCost, graphLabel}: graphProps): React.ReactNode {
+export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: graphProps): React.ReactNode {
   const data = {
     labels: ['Net Income', 'Principal & Interest'],
     datasets: [
       {
-        label: '$',
         data: [monthlySalary - monthlyCost, monthlyCost],
         backgroundColor: [
           '#0A8754',
@@ -25,6 +24,25 @@ export default function PieGraph({monthlySalary, monthlyCost, graphLabel}: graph
       }
     ]
   };
+
+  const centerTextPlugin = {
+    id: 'centerText',
+    afterDatasetsDraw(chart: ChartJS) {
+      const { ctx } = chart;
+
+      const centerX = chart.getDatasetMeta(0).data[0].x;
+      const centerY = chart.getDatasetMeta(0).data[0].y;
+
+      ctx.save();
+      ctx.font = '700 24px Afacad Flux';
+      ctx.fillStyle = 'black';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const centerText = `$${formatCurrency(monthlySalary - monthlyCost)} / mo`;
+      ctx.fillText('Adjusted Gross Income:', centerX, centerY - 12);
+      ctx.fillText(centerText, centerX, centerY + 12);
+    }
+  }
 
   const options: ChartOptions<'doughnut'> = {
     responsive: true,
@@ -39,32 +57,14 @@ export default function PieGraph({monthlySalary, monthlyCost, graphLabel}: graph
       },
       legend: {
         display: false
-      }
+      },
     },
     cutout: '80%'
   };
 
   return (
-    <div className='captioned-graph'>
-      <div className='graph'>
-        <Doughnut data={data} options={options}/>
-      </div>
-      <p>${formatCurrency(monthlySalary - monthlyCost)}</p>
+    <div className='graph'>
+      <Doughnut data={data} options={options} plugins={[centerTextPlugin]}/>
     </div>
   );
 }
-/*
-const DATA_COUNT = 5;
-const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
-
-const data = {
-  labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: Utils.numbers(NUMBER_CFG),
-      backgroundColor: Object.values(Utils.CHART_COLORS),
-    }
-  ]
-};
- */
