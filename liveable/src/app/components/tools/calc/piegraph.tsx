@@ -13,7 +13,7 @@ ChartJS.register(ArcElement, Title, Legend, Tooltip);
 
 export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: graphProps): React.ReactNode {
   const data = {
-    labels: ['AGI', 'Mortgage Cost'],
+    labels: ['AGI', 'Principal & Interest'],
     datasets: [{
       data: [monthlySalary - monthlyCost, monthlyCost],
       backgroundColor: ['#0A8754', '#5AA9E6']
