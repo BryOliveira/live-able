@@ -1,4 +1,5 @@
 import '@/styles/tool-styles.css';
+import '@/styles/mobile-tool-styles.css';
 import ToolNav from '../components/tools/toolnav';
 
 export default function ToolLayout({children}: Readonly<{children: React.ReactNode;}>) {

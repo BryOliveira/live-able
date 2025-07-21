@@ -1,0 +1,258 @@
+/* Large screens - minor adjustments */
+@media screen and (max-width: 1440px) {
+  .calc-wrapper {
+    padding: 0 2rem;
+    max-width: 95vw;
+  }
+  
+  .calc-client-wrapper {
+    gap: 1.5rem;
+  }
+  
+  .graph {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+/* Medium-large screens - start stacking */
+@media screen and (max-width: 1200px) {
+  .calc-wrapper {
+    padding: 0 1.5rem;
+    max-width: 90vw;
+  }
+  
+  .calc-client-wrapper {
+    gap: 2rem;
+  }
+  
+  .form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .graph-wrapper > div {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #graph-container > div {
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  #info {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+
+/* Medium screens - stack graphs vertically */
+@media screen and (max-width: 968px) {
+  .calc-wrapper {
+    padding: 0 1rem;
+    max-width: 100vw;
+  }
+  
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .form-wrapper {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  
+  .calc-form {
+    gap: 1rem;
+  }
+  
+  .calc-form label {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+  
+  .calc-form button {
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    padding: 0.8rem;
+  }
+  
+  #graph-container > div {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .graph-wrapper {
+    padding: 1rem;
+  }
+
+  .graph-wrapper > div {
+    flex-direction: column;
+  }
+  
+  .graph-wrapper h2 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    text-align: center;
+  }
+  
+  #info {
+    max-width: 100%;
+  }
+  
+  #info h3 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+  }
+  
+  #info div:first-child p {
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+  }
+  
+  #legend > p {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+  
+  .tip-container .tooltip {
+    width: 80vw;
+    max-width: 300px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+}
+
+/* Small screens - optimize for mobile */
+@media screen and (max-width: 768px) {
+  .calc-wrapper {
+    padding: 0 0.5rem;
+  }
+  
+  h1 {
+    margin: 0.5rem 0 1rem 0;
+  }
+  
+  .calc-client-wrapper {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .form-wrapper {
+    min-width: 350px;
+  }
+  
+  .calc-form {
+    gap: 0.75rem;
+  }
+  
+  .form-group {
+    gap: 0.3rem;
+  }
+  
+  .select > select {
+    padding: 0.5rem 2rem;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+  
+  .graph-wrapper {
+    padding: 0.75rem;
+  }
+  
+  .graph-wrapper > div {
+    gap: 1rem;
+  }
+  
+  #graph-container > div {
+    gap: 1rem;
+  }
+  
+  #info {
+    gap: 1rem;
+  }
+  
+  #info h3 {
+    margin-bottom: 0.25rem;
+  }
+  
+  #legend {
+    gap: 0.3rem;
+  }
+  
+  #legend > p {
+    gap: 0.25rem;
+  }
+  
+  .tip-container .tooltip {
+    width: 90vw;
+    max-width: 250px;
+    padding: 0.5rem;
+    top: 120%;
+  }
+  
+  .tooltip p {
+    margin: 0.3rem 0;
+    line-height: 1.3;
+  }
+}
+
+/* Extra small screens - very tight spacing */
+@media screen and (max-width: 480px) {
+  .calc-wrapper {
+    padding: 0 0.25rem;
+  }
+  
+  h1 {
+    margin: 0.25rem 0 0.75rem 0;
+  }
+  
+  .calc-client-wrapper {
+    gap: 1rem;
+  }
+  
+  .form-wrapper {
+    padding: 0.5rem;
+    margin: 0;
+  }
+  
+  .calc-form {
+    gap: 0.6rem;
+  }
+  
+  .calc-form button {
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+  }
+  
+  .graph-wrapper {
+    padding: 0.5rem;
+  }
+  
+  .graph-wrapper h2 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .graph-wrapper > div {
+    gap: 0.75rem;
+  }
+  
+  #info {
+    gap: 0.75rem;
+  }
+  
+  #info div:first-child {
+    margin-bottom: 0.25rem;
+  }
+  
+  .tip-container .tooltip {
+    width: 95vw;
+    max-width: 200px;
+    font-size: 0.75rem;
+    padding: 0.4rem;
+  }
+  
+  .tooltip p {
+    margin: 0.2rem 0;
+  }
+}

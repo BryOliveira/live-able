@@ -1,3 +1,9 @@
+.tool-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .input-with-symbol {
   position: relative;
   display: flex;
@@ -76,7 +82,7 @@ h1 {
 .calc-client-wrapper {
   display: grid;
   grid-template-columns: .8fr 2fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: start;
   margin: 1rem 0;
 }
@@ -84,6 +90,11 @@ h1 {
 .form-wrapper {
   display: flex;
   flex-direction: column;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--grayed-item);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--gray-hover);
 }
 
 .calc-form {
@@ -134,6 +145,11 @@ input:invalid {
 .graph-wrapper {
   display: flex;
   flex-direction: column;
+  border-radius: 12px;
+  padding: 1rem 1rem;
+  border: 1px solid var(--grayed-item);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--gray-hover);
 }
 
 .graph-wrapper h2 {
@@ -219,7 +235,7 @@ input:invalid {
   right: 0;
   background-color: var(--gray-hover);
   border: 2px solid var(--grayed-item);
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
   font-size: 14px;
   transition: var(--fade);
 }
@@ -233,12 +249,4 @@ input:invalid {
 .tooltip p {
   margin: .5rem 0;
   line-height: 1.5;
-}
-
-@media screen and (max-width: 768px) {
-  .calc-client-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 }
