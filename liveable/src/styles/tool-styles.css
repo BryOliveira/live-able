@@ -229,6 +229,7 @@ input:invalid, .error {
   height: 24px;
   display: flex;
   align-self: flex-end;
+  justify-self: flex-end;
   position: relative;
 }
 
@@ -266,7 +267,6 @@ input:invalid, .error {
 .flower-wrapper {
   grid-area: 2 / 2 / 3 / 3;
   display: flex;
-  align-items: flex-end;
   padding: 1rem 1rem 0 1rem;
   border-radius: 12px;
   border: 1px solid var(--grayed-item);
@@ -276,9 +276,10 @@ input:invalid, .error {
   height: 138px;
 }
 
-.flower-wrapper > * {
+.flower-wrapper > div {
+  align-items: center;
   width: 350px;
   height: inherit;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
 }

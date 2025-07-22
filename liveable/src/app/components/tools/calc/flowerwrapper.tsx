@@ -24,12 +24,14 @@ export default function FlowerWrapper({ formResults }: formResultsProps) {
   return (
     <div className='flower-wrapper'>
       <div id='min-flower'>
+        <h3>Minimum Salary Liveability</h3>
+        <WiltingFlower />
         {flowerText(minPercent)}
-        <Flower />
       </div>
       <div id='max-flower'>
+        <h3>Maximum Salary Liveability</h3>
+        <Flower />
         {flowerText(maxPercent)}
-        <WiltingFlower />
       </div>
     </div>
   );
