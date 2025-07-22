@@ -81,7 +81,8 @@ h1 {
 
 .calc-client-wrapper {
   display: grid;
-  grid-template-columns: .8fr 2fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   gap: 2rem;
   align-items: start;
   margin: 1rem 0;
@@ -95,6 +96,7 @@ h1 {
   border: 1px solid var(--grayed-item);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
   background-color: var(--gray-hover);
+  grid-area: 1 / 1 / 3 / 2;
 }
 
 .calc-form {
@@ -137,9 +139,18 @@ h1 {
   font-size: 1.2rem;
 }
 
-input:invalid {
-  box-shadow: inset 0 0 1px 1px red!important;
+input:invalid, .error {
+  box-shadow: inset 0 0 1px 1px #e74c3c!important;
   background-color: #ffd2d2;
+}
+
+.error-message  {
+  color: #e74c3c;
+  font-size: 18px;
+}
+
+.error-icon {
+  vertical-align: sub;
 }
 
 .graph-wrapper {
@@ -150,6 +161,7 @@ input:invalid {
   border: 1px solid var(--grayed-item);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
   background-color: var(--gray-hover);
+  grid-area: 1 / 2 / 2 / 3;
 }
 
 .graph-wrapper h2 {
@@ -249,4 +261,24 @@ input:invalid {
 .tooltip p {
   margin: .5rem 0;
   line-height: 1.5;
+}
+
+.flower-wrapper {
+  grid-area: 2 / 2 / 3 / 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem 1rem 0 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--grayed-item);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--gray-hover);
+  width: 700px;
+  height: 138px;
+}
+
+.flower-wrapper > * {
+  width: 350px;
+  height: inherit;
+  display: flex;
+  align-items: flex-end;
 }

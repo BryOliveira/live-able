@@ -3,7 +3,7 @@
   --foreground: #0a0908;
   --nav-background: #ffffff;
   --nav-foreground: #100f0f;
-  --blue-accent: #5AA9E6;
+  --blue-accent: hsl(206, 74%, 63%);
   /* --blue-gradient: #5093c7; */
   --green-accent: #0A8754;
   --green-hover: #086942;
