@@ -12,12 +12,12 @@ export default function FlowerWrapper({ formResults }: formResultsProps) {
   const maxPercent = monthlyCost / maxIncome;
 
 
-  const flowerText = (percentIncome: number) => {
+  const flowerDiv = (percentIncome: number) => {
     if (percentIncome < .25) {
-      return <p>gutten</p>
+      return (<><Flower /><p>gutten</p></>);
     }
     else {
-      return <p>baden</p>
+      return (<><WiltingFlower /><p>gutten</p></>);
     }
   };
 
@@ -25,13 +25,11 @@ export default function FlowerWrapper({ formResults }: formResultsProps) {
     <div className='flower-wrapper'>
       <div id='min-flower'>
         <h3>Minimum Salary Liveability</h3>
-        <WiltingFlower />
-        {flowerText(minPercent)}
+        {flowerDiv(minPercent)}
       </div>
       <div id='max-flower'>
         <h3>Maximum Salary Liveability</h3>
-        <Flower />
-        {flowerText(maxPercent)}
+        {flowerDiv(maxPercent)}
       </div>
     </div>
   );
