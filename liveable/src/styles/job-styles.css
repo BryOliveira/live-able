@@ -71,7 +71,7 @@
 .job-header, .job-subheader {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   line-height: 1;
 }
 
@@ -99,6 +99,28 @@
 #no-job {
   font-size: 24px;
   padding: 2rem;
+}
+
+#export {
+  background-color: var(--green-accent);
+  color: var(--background);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: .4rem 0;
+  font-size: 16px;
+  transition: var(--fade);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+#export:hover {
+  background-color: var(--green-hover);
+}
+
+#tright {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -139,9 +161,6 @@
 
     #job-view h1 {
       font-size: 24px;
-    }
-
-    .mobile {
     }
   }
 }

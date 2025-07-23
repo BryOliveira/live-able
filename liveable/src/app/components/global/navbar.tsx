@@ -19,7 +19,7 @@ export default function Navbar(): React.ReactNode {
             <Link href=''>Tools</Link>
             <ul id='dropdown'>
               <li><Link href='../tools/calc'>Liveability Calculator</Link></li>
-              <li><Link href='../tools/compare'>Rent vs. Buy Comparison Tool</Link></li>
+              <li><Link href='../tools/map'>Liveability Interactive Map</Link></li>
             </ul>
           </li>
         </ul>

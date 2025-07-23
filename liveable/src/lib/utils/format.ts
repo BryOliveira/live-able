@@ -29,7 +29,7 @@ export function formatSalaryRange(job: Job): string {
   const max = max_salary ?? 0;
 
   if (is_hourly) {
-    return `$${formatCurrency(min)} - $${formatCurrency(max)})} / hour`;
+    return `$${formatCurrency(min)} - $${formatCurrency(max)} / hour`;
   } else {
     const minAnnual = formatCurrency(min * 1000);
     const maxAnnual = formatCurrency(max * 1000);
