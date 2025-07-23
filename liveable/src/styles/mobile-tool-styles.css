@@ -15,8 +15,7 @@
   }
 
   .flower-wrapper {
-    width: 100%;
-    max-width: 700px;
+    width: inherit;
   }
 }
 
@@ -48,8 +47,7 @@
 
   .flower-wrapper {
     grid-area: 3 / 1 / 4 / 2;
-    width: 100%;
-    max-width: 600px;
+    width: inherit;
     height: auto;
     min-height: 120px;
     justify-content: space-around;
@@ -129,14 +127,35 @@
     align-items: center;
     gap: 1rem;
     height: auto;
+    min-height: auto;
   }
 
-  .flower-wrapper > * {
+  .flower-wrapper > div:not(.flower-tip-container) {
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     height: auto;
-    justify-content: center;
+    min-height: 140px;
+    justify-content: flex-start;
     text-align: center;
+    position: relative;
+  }
+
+  .flower-tip-container {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    align-self: flex-end;
+    margin: 0;
+    margin-left: 0;
+  }
+
+  .flower-tip-container .tooltip {
+    width: 80vw;
+    max-width: 280px;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 100%;
+    margin-bottom: 0.5rem;
   }
   
   #info {
@@ -211,11 +230,32 @@
   .flower-wrapper {
     padding: 0.75rem;
     gap: 0.75rem;
+    min-height: auto;
   }
 
-  .flower-wrapper p {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    margin: 0.5rem 0;
+  .flower-wrapper > div:not(.flower-tip-container) {
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flower-tip-container {
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.25rem;
+    margin: 0;
+  }
+
+  .flower-tip-container .tooltip {
+    width: 85vw;
+    max-width: 240px;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+
+  .flower-svg svg {
+    width: 50px !important;
   }
   
   #info {
@@ -291,11 +331,40 @@
   .flower-wrapper {
     padding: 0.5rem;
     gap: 0.5rem;
+    min-height: auto;
   }
 
-  .flower-wrapper p {
-    font-size: 0.85rem;
-    margin: 0.25rem 0;
+  .flower-wrapper > div:not(.flower-tip-container) {
+    max-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flower-tip-container {
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.25rem;
+    margin: 0;
+  }
+
+  .flower-tip-container .tooltip {
+    width: 90vw;
+    max-width: 200px;
+    font-size: 0.75rem;
+  }
+
+  .flower-svg svg {
+    width: 40px !important;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+
+  .flower-status {
+    font-size: 0.9rem !important;
+    margin: -0.2rem 0 0 0 !important;
+    padding: 0.5rem 0 0 0.5rem !important;
   }
   
   #info {
