@@ -18,16 +18,14 @@ const defaultValues = {
 
 export default function CalcClient(): React.ReactNode {
   const searchParams = useSearchParams();
-  let initialFormData: CalcForm = { ...defaultValues };
-  Object.keys(defaultValues).forEach((key) => {
+  const initialFormData: CalcForm = { ...defaultValues } as CalcForm;
+  (Object.keys(defaultValues) as (keyof CalcForm)[]).forEach((key) => {
     const value = searchParams.get(key);
     if (value !== null) {
-      const isNumber = typeof defaultValues[key as keyof CalcForm] === 'number';
-
-      if (isNumber) {
-        (initialFormData as any)[key] = Number(value) as CalcForm[keyof CalcForm];
+      if (typeof defaultValues[key] === 'number') {
+        ((initialFormData as unknown) as Record<string, unknown>)[key] = Number(value);
       } else {
-        (initialFormData as any)[key] = value as CalcForm[keyof CalcForm];
+        ((initialFormData as unknown) as Record<string, unknown>)[key] = value;
       }
     }
     console.log(key, value);
