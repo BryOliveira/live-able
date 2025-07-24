@@ -7,8 +7,8 @@ export default function ToolNav(): React.ReactNode {
       <Link href='/tools/calc' className='tool-nav-link'>
         Liveability Calculator
       </Link>
-      <Link href='/tools/compare' className='tool-nav-link'>
-        Rent vs. Buy Comparison
+      <Link href='/tools/map' className='tool-nav-link'>
+        Liveability Interactive Map
       </Link>
     </nav>
   );

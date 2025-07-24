@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import { CalcForm } from '@/lib/utils/forms';
 import { WarningIcon } from '@phosphor-icons/react';
+import { parseInputValue } from '@/lib/utils/tools';
 
 interface CalcFormProps {
   onSubmit: (data: CalcForm) => void;
-  initalValues: CalcForm;
+  initialValues: CalcForm;
 }
 
-export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProps): React.ReactNode {
-  const [formData, setFormData] = useState<CalcForm>(initalValues);
+export default function CalcFormWrapper({ onSubmit, initialValues }: CalcFormProps): React.ReactNode {
+  const [formData, setFormData] = useState<CalcForm>(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof CalcForm, string>>>({});
 
   
@@ -114,12 +115,6 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
     onSubmit(formData);
   };
 
-  const parseInputValue = (value: string): number => {
-    const cleaned = value.replace(/,/g, '');
-    const parsed = parseFloat(cleaned);
-    return isNaN(parsed) ? 0 : parsed;
-  };
-
   return (
     <div className='form-wrapper'>
       <form className='calc-form' onSubmit={submitHandler}>
@@ -133,7 +128,7 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
               type='text' 
               min='0'
               placeholder='Enter home price'
-              defaultValue={initalValues.homePrice}
+              defaultValue={initialValues.homePrice}
               onChange={(event) => inputChangeHandler('homePrice', parseInputValue(event.target.value))}
               className={errors.homePrice ? 'error' : ''}
             />
@@ -151,7 +146,7 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
               type='text' 
               min='0' 
               placeholder='Enter down payment' 
-              defaultValue={initalValues.downPayment}
+              defaultValue={initialValues.downPayment}
               onChange={(event) => inputChangeHandler('downPayment', parseInputValue(event.target.value))}
               className={errors.downPayment ? 'error' : ''}
             />
@@ -180,7 +175,7 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
               type='text' 
               min='0' 
               placeholder='Enter minimum salary' 
-              defaultValue={initalValues.minSalary}
+              defaultValue={initialValues.minSalary}
               onChange={(event) => inputChangeHandler('minSalary', parseInputValue(event.target.value))}
               className={errors.minSalary ? 'error' : ''}
             />
@@ -198,7 +193,7 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
               type='text' 
               min='0' 
               placeholder='Enter maximum salary' 
-              defaultValue={initalValues.maxSalary}
+              defaultValue={initialValues.maxSalary}
               onChange={(event) => inputChangeHandler('maxSalary', parseInputValue(event.target.value))}
               className={errors.maxSalary ? 'error' : ''}
             />
@@ -216,7 +211,7 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
               min='0' 
               max='100'
               placeholder='Enter length of term' 
-              defaultValue={initalValues.loanTerm}
+              defaultValue={initialValues.loanTerm}
               onChange={(event) => inputChangeHandler('loanTerm', event.target.value)}
               step='1' 
             />
@@ -234,7 +229,7 @@ export default function CalcFormWrapper({ onSubmit, initalValues }: CalcFormProp
               type='number' 
               min='0'
               placeholder='Enter interest rate' 
-              defaultValue={initalValues.interestRate}
+              defaultValue={initialValues.interestRate}
               onChange={(event) => inputChangeHandler('interestRate', event.target.value)} 
               step='any' 
             />

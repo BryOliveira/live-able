@@ -28,11 +28,11 @@ export default function FlowerWrapper({ formResults }: formResultsProps) {
     const scale = getFlowerScale(percentIncome, isHealthy);
 
     const getStatusText = (percent: number) => {
-      if (percent < 0.15) return 'Very Liveable';
-      if (percent < 0.25) return 'Liveable';
-      if (percent < 0.28) return 'Manageable';
-      if (percent < 0.35) return 'Tight';
-      return 'Challenging';
+      return percent < .15 ? 'Very Liveable' :
+             percent < .25 ? 'Liveable'      :
+             percent < .28 ? 'Manageable'    :
+             percent < .35 ? 'Tight'         :
+                             'Challenging';
     };
 
     const getTextColor = (percent: number) => {

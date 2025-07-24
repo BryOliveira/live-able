@@ -8,6 +8,13 @@ export interface CalcForm {
   interestRate: number;
 }
 
+export interface MapForm {
+  downPayment: number;
+  salary: number;
+  loanTerm: number;
+  interestRate: number;
+}
+
 export interface SearchParams {
   career?: string;
   location?: string;

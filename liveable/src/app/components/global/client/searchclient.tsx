@@ -68,6 +68,11 @@ export default function SearchClient(): React.ReactNode {
 
     router.push(url);
   }
+  
+  useEffect(() => {
+    fetchSuggestions('', 'career');
+    fetchSuggestions('', 'location');
+  }, []);
 
   useEffect(() => {
     if (activeInput === 'career') {
