@@ -18,8 +18,10 @@ export default function MapPage(): React.ReactNode {
 
   return (
     <div className='map-wrapper'>
-      <h1>Liveability Map</h1>
-      <SalaryComponent formData={formData} setFormData={setFormData} />
+      <div>
+        <h1>Liveability Map</h1>
+        <SalaryComponent formData={formData} setFormData={setFormData} />
+      </div>
       <MapComponent formData={formData} />
     </div>
   );

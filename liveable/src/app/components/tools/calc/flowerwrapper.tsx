@@ -4,6 +4,14 @@ import { QuestionIcon } from '@phosphor-icons/react';
 import { formResultsProps } from './graphwrapper';
 import * as Tool from '@/lib/utils/tools';
 
+const colorStops = [
+  { pct: .15, color: 'rgba(26, 150, 65, 1)' },
+  { pct: .25, color: 'rgba(141, 185, 90, 1)'},
+  { pct: .28, color: 'rgba(173, 173, 131, 1)'},
+  { pct: .33, color: 'rgba(218, 151, 84, 1)'},
+  { pct: .50, color: 'rgba(215, 25, 28, 1)'}
+]
+
 export default function FlowerWrapper({ formResults }: formResultsProps) {
   const minIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.minSalary) : Tool.annualToMonthly(formResults.minSalary);
   const maxIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.maxSalary) : Tool.annualToMonthly(formResults.maxSalary);
@@ -35,18 +43,44 @@ export default function FlowerWrapper({ formResults }: formResultsProps) {
                              'Challenging';
     };
 
+    function parseRgba(rgba: string) {
+      // Example: "rgba(26, 150, 65, 1)"
+      const match = rgba.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)/);
+      if (!match) throw new Error('Invalid RGBA color: ' + rgba);
+      return {
+        r: parseInt(match[1], 10),
+        g: parseInt(match[2], 10),
+        b: parseInt(match[3], 10),
+        a: match[4] !== undefined ? parseFloat(match[4]) : 1,
+      };
+    }
+
+    const interpolateColor = (color1: string, color2: string, t: number) => {
+      const c1 = parseRgba(color1);
+      const c2 = parseRgba(color2);
+      return `rgb(${
+        Math.round(c1.r + (c2.r - c1.r) * t)
+      }, ${
+        Math.round(c1.g + (c2.g - c1.g) * t)
+      }, ${
+        Math.round(c1.b + (c2.b - c1.b) * t)
+      }, ${
+        (c1.a + (c2.a - c1.a) * t).toFixed(2)
+      })`;
+    };
+
     const getTextColor = (percent: number) => {
-      if (percent < 0.15) {
-        return '#086942';
+      const p = Math.max(.15, Math.min(.5, percent));
+      for (let i = 1; i < colorStops.length; i++) {
+        if (p <= colorStops[i].pct) {
+          const lower = colorStops[i - 1];
+          const upper = colorStops[i];
+          const range = upper.pct - lower.pct;
+          const t = (p - lower.pct) / range;
+          return interpolateColor(lower.color, upper.color, t);
+        }
       }
-      const clampedPercent = Math.min(0.5, Math.max(0.15, percent));
-      const greenColor = { r: 8, g: 105, b: 66 };
-      const redColor = { r: 255, g: 0, b: 0 };
-      const ratio = (clampedPercent - 0.15) / (0.5 - 0.15);
-      const r = Math.round(greenColor.r + (redColor.r - greenColor.r) * ratio);
-      const g = Math.round(greenColor.g + (redColor.g - greenColor.g) * ratio);
-      const b = Math.round(greenColor.b + (redColor.b - greenColor.b) * ratio);
-      return `rgb(${r}, ${g}, ${b})`;
+      return colorStops[colorStops.length - 1].color;
     };
 
     return (

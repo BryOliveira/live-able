@@ -167,14 +167,18 @@ nav > * {
   padding: 8px;
 }
 
-nav a {
+nav a, footer a {
   text-decoration: none;
   color: var(--nav-foreground);
   transition: var(--fade);
 }
 
-nav a:hover {
+nav a:hover, footer a {
   color: var(--green-accent);
+}
+
+footer a:hover {
+  color: var(--grayed-item);
 }
 
 nav ul {

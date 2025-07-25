@@ -69,7 +69,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-h1 {
+.calc-wrapper h1 {
   text-align: left;
   margin: 1rem 0;
 }
@@ -372,21 +372,21 @@ input:invalid, .error {
 }
 
 #vl {
-  color: var(--green-hover);
+  color: #1a9641;
 }
 
 #l {
-  color: #044128;
+  color: #8db95a;
 }
 
 #t {
-  color: #612f2d;
+  color: #da9754;
 }
 
 #m {
-  color: #5c4a2e;
+  color: #adad83;
 }
 
 #c {
-  color: #EE0000
+  color: #d7191c;
 }

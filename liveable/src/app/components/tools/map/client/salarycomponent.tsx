@@ -86,6 +86,7 @@ export default function SalaryComponent({ formData, setFormData }: MapFormProps)
           </div>
         </div>
       </form>
+      <p>NOTE: Home price is the median home price for each state.</p>
     </div>
   );
 }

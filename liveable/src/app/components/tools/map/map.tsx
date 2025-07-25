@@ -10,11 +10,11 @@ import LegendComponent from './legendcomponent';
 import { formatCurrency } from '@/lib/utils/format';
 
 function getColor(percent: number): string {
-  return percent < .15 ? '#1ca76fff' :
-         percent < .25 ? '#1d5940ff' :
-         percent < .28 ? '#5c4a2e' :
-         percent < .35 ? '#b1413dff' :
-                         '#cc1414ff' ;
+  return percent < .15 ? '#1a9641' :
+         percent < .25 ? '#a6d96a' :
+         percent < .28 ? '#adad83' :
+         percent < .35 ? '#fdae61' :
+                         '#d7191c' ;
 }
 
 function HomeButton(): React.ReactNode {
@@ -61,7 +61,7 @@ export default function MapClient({ formData }: DataProps): React.ReactElement {
     });
 
     layer.bindTooltip(
-      `<div style="color: ${color}; padding: .5rem 1rem;">
+      `<div style="color: ${color}; padding: .5rem 1rem; border: 2px solid ${color}; border-radius: 12px;">
         <h3>${feature?.properties?.name}</h2>
         <p>Median House Price: $${formatCurrency(homePrice)}</p>
         <p>Percent of income: ${(percent * 100).toFixed(2)}%</p>
@@ -72,13 +72,13 @@ export default function MapClient({ formData }: DataProps): React.ReactElement {
   return (
     <MapContainer
       center={[38.82, -97.58]}
-      zoom={5}
-      minZoom={4}
+      zoom={4}
       zoomSnap={0.5}
     >
       {
         geoData && 
         <GeoJSON 
+          key={JSON.stringify(formData)}
           data={geoData} 
           onEachFeature={onEachFeature}
           style={geoJsonStyle}

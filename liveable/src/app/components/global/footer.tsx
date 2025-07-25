@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer(): React.ReactNode {
   return (
@@ -11,12 +12,12 @@ export default function Footer(): React.ReactNode {
           alt='plant-image'
         />
         <ul>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Credits</li>
+          <li><Link href='../info/about'>About Us </Link></li>
+          <li><Link href='../info/contact'>Contact Us</Link></li>
+          <li><Link href='../info/credits'>Credits</Link></li>
         </ul>
         <ul>
-          <li>&copy; 2025 Bryan Oliveira . All rights reserved.</li>
+          <li>&copy; 2025 Bryan Oliveira.<br /> All rights reserved.</li>
         </ul>
       </div>
     </footer>

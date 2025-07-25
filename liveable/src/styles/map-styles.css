@@ -46,9 +46,10 @@ h1 {
   transition: var(--fade);
 }
 
-.form-wrapper {
-  max-width: 60vw;
+.map-wrapper > div > .form-wrapper {
+  width: max-content;
   justify-self: center;
+  max-width: 90vw;
 }
 
 .map-form {
@@ -57,11 +58,8 @@ h1 {
 }
 
 .map-form input {
-  min-width: 110px;
+  min-width: 120px;
   text-wrap: none;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .legend {
@@ -84,7 +82,41 @@ h1 {
   font-family: var(--font-sans), Arial, sans-serif;
   font-weight: 500;
   color: var(--foreground);
+  background-color: #222;
   box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+}
+
+path.leaflet-interactive:focus {
+  outline: none;
+}
+
+.legend #m {
+  color: #adad83;
+}
+
+.legend #t {
+  color: #da9754;
+}
+
+.legend #vt {
+  color: #d7191c;
+}
+
+.legend #vl {
+  color: #1a9641;
+}
+
+.legend #l {
+  color: #8db95a;
+}
+
+.form-wrapper p {
+  text-align: center;
+  padding: 1rem 0 0 0;
+  font-weight: bold;
 }
 
 /* --- Mobile Friendly Styles for Map Page --- */
@@ -103,9 +135,8 @@ h1 {
     padding: 0.4rem;
     margin: 0.5rem;
     border-radius: 8px;
-    right: 0.5rem;
-    bottom: 0.5rem;
   }
+
   .form-wrapper {
     width: 100%;
     min-width: 0;
@@ -125,13 +156,7 @@ h1 {
     max-width: 100%;
     box-sizing: border-box;
   }
-  #home-button {
-    height: 32px;
-    width: 32px;
-    margin: 6px;
-    bottom: 0.5rem;
-    right: 0.5rem;
-  }
+
   h1 {
     margin: 1rem 0.5rem;
     font-size: 1.3rem;
@@ -152,12 +177,10 @@ h1 {
     margin: 0.5rem 0 0.5rem 0;
   }
   .legend {
-    font-size: 12px;
+    font-size: 10px;
     padding: 0.3rem;
     margin: 0.3rem;
     border-radius: 6px;
-    right: 0.3rem;
-    bottom: 0.3rem;
   }
   .form-wrapper {
     padding: 0.3rem 0.2rem;
@@ -169,13 +192,6 @@ h1 {
     min-width: 0;
     max-width: 100%;
     box-sizing: border-box;
-  }
-  #home-button {
-    height: 28px;
-    width: 28px;
-    margin: 4px;
-    bottom: 0.3rem;
-    right: 0.3rem;
   }
   h1 {
     margin: 0.5rem 0.2rem;
