@@ -41,6 +41,9 @@ export default function GraphWrapper({ formResults }: formResultsProps): React.R
                 (Monthly Gross Income - Monthly Mortgage Cost)
               </p>
               <p>
+                Calculator default assumes a down payment of 20% of the house price.
+              </p>
+              <p>
                 Note: Calculator only takes into account mortgage cost, does not include income tax,
                 property tax, mortgage insurance, homeowner&apos;s insurance, etc.
               </p>

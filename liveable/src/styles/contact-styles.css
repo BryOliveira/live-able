@@ -1,0 +1,37 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90vw;
+  margin: 2rem;
+  justify-self: center;
+}
+
+.contact h1 {
+  margin: 1.5rem 4.5rem; 
+}
+
+.contact p {
+  line-height: 2rem;
+  font-size: 18px;
+  text-align: center;
+}
+
+.contact > :not(:first-child) {
+  align-self: center;
+}
+
+.contact a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--blue-accent);
+  transition: var(--fade);
+  font-size: 18px;
+}
+
+.contact a:hover {
+  color: var(--blue-hover);
+  transition: var(--fade);
+}

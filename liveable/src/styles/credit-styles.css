@@ -1,0 +1,40 @@
+table, th, td {
+  border: 3px solid var(--green-accent);
+  justify-self: center;
+  margin: 5rem;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: .5rem;
+}
+
+th {
+  font-size: 24px;
+}
+
+td {
+  font-size: 20px;
+}
+
+table a {
+  text-decoration: none;
+  color: var(--blue-accent);
+  transition: var(--fade);
+}
+
+table a:hover {
+  color: var(--blue-hover);
+  transition: var(--fade);
+}
+
+.credits h1 {
+  margin: 3.25rem 4.5rem;
+}
+
+.credits {
+  width: 90vw;
+  margin: 2rem;
+  justify-self: center;
+}

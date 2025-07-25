@@ -1,0 +1,17 @@
+.about {
+  width: 90vw;
+  margin: 2rem;
+  justify-self: center;
+}
+
+.about h1 {
+  margin: 3.25rem 4.5rem; 
+}
+
+.about p {
+  width: 80%;
+  font-size: 18px;
+  justify-self: center;
+  margin: 1rem;
+  line-height: 2rem;
+}

@@ -4,10 +4,9 @@
   --nav-background: #ffffff;
   --nav-foreground: #100f0f;
   --blue-accent: #5baae6;
-  /* --blue-gradient: #5093c7; */
+  --blue-hover: #4682b0;
   --green-accent: #0A8754;
   --green-hover: #086942;
-  /* --green-gradient: #096d45; */
   --grayed-item: #999999;
   --gray-hover: #f6fafa;
   --font-sans: var(--font-afacad-flux);
