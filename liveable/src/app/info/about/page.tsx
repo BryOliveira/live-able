@@ -17,7 +17,7 @@ export default function AboutPage(): React.ReactNode {
         my partner <Link href='https://github.com/PipeCruz'>Felipe Cruz</Link> and I decided on <Link href='https://github.com/BryOliveira/affor-db'>Affor-db</Link>, 
         a terminal based command-line Python application. 
         The data itself was SQL tables of job and company listings taken from a Kaggle Dataset and reference
-        pre-processed data from Zillow's public datasets. 
+        pre-processed data from Zillow&apos;s public datasets. 
       </p>
       <p>
         Though the app itself was functional, it lacked user-friendliness and required users
