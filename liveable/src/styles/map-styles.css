@@ -1,3 +1,19 @@
+/*
+  Map Styles
+
+  This stylesheet provides custom styles for a map page, including layout,
+  map container, interactive map elements, legend, form controls, and 
+  responsive/mobile-friendly adjustments.
+  ----------------------------------------------------------------------------
+  Map Container & Leaflet Integration
+  ----------------------------------------------------------------------------
+  - .leaflet-container: Sets map size, centering, and margin.
+  - .leaflet-interactive: Adds transition and default stroke color for map features.
+  - .leaflet-interactive:hover: Changes stroke color on hover for interactivity.
+  - path.leaflet-interactive:focus: Removes outline for focused map paths.
+
+  ============================================================================
+*/
 
 .map-wrapper > div {
   margin: 1rem;

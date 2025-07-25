@@ -11,6 +11,14 @@ const defaultValues = {
   interestRate: 6.8
 }
 
+/**
+ * Renders the main wrapper for the Liveability Map tool.
+ *
+ * This component manages the state for the map form and passes it down to child components.
+ * It displays a header, a salary input component, and the map visualization component.
+ *
+ * @returns The rendered map wrapper component as a ReactNode.
+ */
 export default function MapWrapper(): React.ReactNode {
   const [formData, setFormData] = useState<MapForm>(defaultValues);
 

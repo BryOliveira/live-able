@@ -2,7 +2,12 @@
 import { HomeSale, Suitcase } from 'iconoir-react';
 import { ChartBarIcon } from '@phosphor-icons/react';
 
-export default function Banner(): React.ReactElement {
+/**
+ * Renders the main banner section for the home page, displaying three feature highlights.
+ *
+ * @returns The banner component containing feature highlights as a ReactNode.
+ */
+export default function Banner(): React.ReactNode {
   return (
     <div id='banner'>
       <div>

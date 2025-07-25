@@ -1,3 +1,16 @@
+/**
+ * Responsive CSS for mobile devices to be able to use the Calculator
+ *
+ * This stylesheet provides responsive layout and styling for a calculation tool interface,
+ * adapting the UI for a wide range of screen sizes from large desktops to extra small mobile devices.
+ *
+ * General notes:
+ * - Uses CSS Grid and Flexbox for layout adjustments.
+ * - Employs clamp() for fluid, responsive font sizing.
+ * - Tooltips and interactive elements are optimized for touch devices.
+ * - Ensures accessibility and usability across device sizes.
+ */
+ 
 /* Large screens - minor adjustments */
 @media screen and (max-width: 1440px) {
   .calc-wrapper {

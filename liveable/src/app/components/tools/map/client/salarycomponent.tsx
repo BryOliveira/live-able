@@ -2,11 +2,19 @@ import React from 'react';
 import { MapForm } from '@/lib/utils/forms';
 import { parseInputValue } from '@/lib/utils/tools';
 
+// Interface for TypeScript Typing.
 export interface MapFormProps {
   formData: MapForm;
   setFormData: React.Dispatch<React.SetStateAction<MapForm>>;
 }
 
+/**
+ * Renders a form for entering salary, down payment, loan term, and interest rate.
+ *
+ * @param formData - The current form data containing salary, down payment, loan term, and interest rate.
+ * @param setFormData - Function to update the form data state.
+ * @returns The rendered salary component form as a ReactNode.
+ */
 export default function SalaryComponent({ formData, setFormData }: MapFormProps): React.ReactNode {
   const inputChangeHandler = (field: keyof MapForm, value: string | number) => {
     setFormData({

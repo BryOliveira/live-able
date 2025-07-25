@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+/**
+ * Renders the global footer component for the application.
+ *
+ * @returns The rendered footer component as a ReactNode.
+ */
 export default function Footer(): React.ReactNode {
   return (
     <>

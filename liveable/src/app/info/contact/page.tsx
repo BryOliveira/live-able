@@ -6,6 +6,11 @@ import Link from 'next/link';
 
 export const metadata: Metadata = { title: 'Contact Us' };
 
+/**
+ * Renders the Contact Us page for the application.
+ *
+ * @returns The rendered Contact Us page component as a ReactNode.
+ */
 export default function ContactPage(): React.ReactNode {
   return (
     <div className='contact'>

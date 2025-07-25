@@ -2,6 +2,13 @@ import { Job } from '@/lib/prisma';
 import { formatCurrency, formatSalaryRange } from '@/lib/utils/format';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Displays detailed information about a selected job, including title, company, sector, location,
+ * salary range, and job description. Provides a button to export job data to the liveability calculator tool.
+ *
+ * @param job - The job object to display, or `null` if no job is selected.
+ * @returns A ReactNode containing the job details view, or a message if no job is selected.
+ */
 export default function JobView({ job }: { job: Job | null }): React.ReactNode {
   const router = useRouter();
   const handleExport = () => {

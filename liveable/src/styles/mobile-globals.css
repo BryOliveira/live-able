@@ -1,3 +1,17 @@
+/*
+  Responsive CSS for Mobile Devices (max-width: 768px)
+
+  - Adjusts navigation layout to column direction and modifies padding for mobile screens.
+  - Increases spacing between navigation list items.
+  - Restricts dropdown menu width and adjusts dropdown list item line height for compactness.
+  - Hides search and pin icons to reduce clutter on smaller screens.
+  - Modifies search form width and input styling for better mobile usability.
+  - Sets autocomplete dropdown to fit content and limits its height.
+  - Centers footer content and stacks footer elements vertically with spacing.
+  - Removes default padding from footer lists and reduces margin between footer list items.
+  - Prevents horizontal scrolling by hiding overflow on html and body elements.
+*/
+
 @media screen and (max-width: 768px) {
   nav {
     flex-direction: column;

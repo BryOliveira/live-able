@@ -11,6 +11,20 @@ interface graphProps {
 
 ChartJS.register(ArcElement, Title, Legend, Tooltip);
 
+/**
+ * Renders a doughnut pie graph representing the breakdown of monthly salary and monthly cost.
+ *
+ * @param {graphProps} props - The properties for the PieGraph component.
+ * @param {number} props.monthlySalary - The user's total monthly salary.
+ * @param {number} props.monthlyCost - The user's total monthly cost (e.g., principal & interest).
+ * @param {string} props.graphLabel - The label to display as the graph's title.
+ * @returns {React.ReactNode} The rendered PieGraph component.
+ *
+ * @remarks
+ * - Uses Chart.js Doughnut chart to visualize the data.
+ * - Displays the Adjusted Gross Income (AGI) in the center of the chart using a custom plugin.
+ * - Customizes tooltip and legend appearance for better UX.
+ */
 export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: graphProps): React.ReactNode {
   const data = {
     labels: ['AGI', 'Principal & Interest'],
@@ -20,6 +34,21 @@ export default function PieGraph({ monthlySalary, monthlyCost, graphLabel }: gra
     }]
   };
 
+  /**
+   * Chart.js plugin to render custom center text on a pie or doughnut chart.
+   *
+   * This plugin draws two lines of text at the center of the chart:
+   * - The label "Adjusted Gross Income:"
+   * - The calculated adjusted gross income per month, formatted as currency.
+   *
+   * @remarks
+   * The plugin uses the chart's first dataset to determine the center coordinates.
+   * It customizes the font, color, and alignment for the center text.
+   *
+   * @property {string} id - The unique identifier for the plugin.
+   * @method afterDatasetsDraw - Chart.js lifecycle hook that draws the center text after datasets are rendered.
+   * @param chart - The Chart.js instance, used to access context and dataset metadata.
+   */
   const centerTextPlugin = {
     id: 'centerText',
     afterDatasetsDraw(chart: ChartJS) {

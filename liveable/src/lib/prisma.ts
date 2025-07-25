@@ -2,18 +2,48 @@ import prisma from '@/lib/db';
 import { Prisma } from '@prisma/client';
 import { Decimal } from '@prisma/client/runtime/library';
 
+/**
+ * Represents a company entity with its basic information.
+ *
+ * @property id - Unique identifier for the company.
+ * @property company_name - The name of the company.
+ * @property sector - The sector or industry the company operates in.
+ */
 export interface Company {
   id: number;
   company_name: string;
   sector: string;
 }
 
+/**
+ * Represents the median house price information for a specific location.
+ *
+ * @property loc_state - The location's state code or abbreviation.
+ * @property state - The full name of the state.
+ * @property median_house_price - The median price of houses in the specified location.
+ */
 export interface HomePrice {
   loc_state: string;
   state: string;
   median_house_price: number;
 }
 
+
+/**
+ * Represents a job listing with associated company and home price information.
+ *
+ * @property id - Unique identifier for the job.
+ * @property job_title - Title of the job position.
+ * @property job_description (optional) - Detailed description of the job, or null if not provided.
+ * @property loc_city - City where the job is located.
+ * @property string loc_state - State where the job is located.
+ * @property avg_salary (optional) - Average salary for the job, or null if not available.
+ * @property max_salary (optional) - Maximum salary for the job, or null if not available.
+ * @property min_salary (optional) - Minimum salary for the job, or null if not available.
+ * @property is_hourly - Indicates if the salary is hourly (true) or not (false).
+ * @property companies - The company offering the job.
+ * @property home_prices (optional) - Home price information relevant to the job location, or null if not available.
+ */
 export interface Job {
   id: number;
   job_title: string;
@@ -28,11 +58,40 @@ export interface Job {
   home_prices: HomePrice | null;
 }
 
-export interface JobFilters {
+
+/**
+ * Represents optional filters that can be applied when querying for jobs.
+ *
+ * @property career - (Optional) The career field to filter jobs by.
+ * @property location - (Optional) The location to filter jobs by.
+ */
+interface JobFilters {
   career?: string;
   location?: string;
 }
 
+/**
+ * Represents the result of a job query from Prisma, including job details,
+ * associated company information, and optional home price data.
+ *
+ * @property {number} job_id - Unique identifier for the job.
+ * @property {string} job_title - Title of the job position.
+ * @property {string | null} job_description - Description of the job, or null if not available.
+ * @property {string | null} loc_city - City where the job is located, or null if not specified.
+ * @property {string} loc_state - State where the job is located.
+ * @property {Decimal | null} avg_salary - Average salary for the job, or null if not available.
+ * @property {Decimal | null} max_salary - Maximum salary for the job, or null if not available.
+ * @property {Decimal | null} min_salary - Minimum salary for the job, or null if not available.
+ * @property {boolean} is_hourly - Indicates if the salary is hourly.
+ * @property {Object} companies - Information about the company offering the job.
+ * @property {number} companies.company_id - Unique identifier for the company.
+ * @property {string} companies.company_name - Name of the company.
+ * @property {string} companies.sector - Sector in which the company operates.
+ * @property {string} [companies.loc_state] - Optional state where the company is located.
+ * @property {Object | null} home_prices - Optional home price data for the job's state.
+ * @property {string} home_prices.loc_state - State for which the home price is provided.
+ * @property {Decimal} home_prices.median_house_price - Median house price in the state.
+ */
 interface PrismaJobResult {
   job_id: number;
   job_title: string;
@@ -55,6 +114,17 @@ interface PrismaJobResult {
   } | null;
 }
 
+/**
+ * Parses a location string and extracts the city and/or state information.
+ *
+ * The function expects the location string to be in one of the following formats:
+ * - "City, State": Returns an object with both `city` and `state` properties.
+ * - "ST": If the string is exactly two letters, it is treated as a state abbreviation and returned as the `state` property.
+ * - Otherwise, treats the input as a city and also returns the uppercase version as the `state` property.
+ *
+ * @param location - The location string to parse.
+ * @returns An object containing the parsed `city` and/or `state` properties.
+ */
 function parseLocation(location: string): { city?: string; state?: string} {
   const trimmed = location.trim();
   if (trimmed.includes(',')) {
@@ -74,6 +144,16 @@ function parseLocation(location: string): { city?: string; state?: string} {
   return { city: trimmed, state: trimmed.toUpperCase() };
 }
 
+/**
+ * Retrieves a list of jobs from the database based on optional filter criteria.
+ *
+ * @param filters - An optional object containing filter criteria for jobs.
+ * @param filters.career - A string to filter jobs by job title or company sector.
+ * @param filters.location - A string representing the location to filter jobs by city and/or state.
+ * @returns A promise that resolves to an array of jobs matching the provided filters.
+ *
+ * The returned jobs include associated company and home price information.
+ */
 export default async function getJobs(filters: JobFilters = {}): Promise<Job[]> {
   const { career, location } = filters;
 

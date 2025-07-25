@@ -9,6 +9,19 @@ export interface formResultsProps {
   formResults: CalcForm;
 }
  
+/**
+ * A wrapper component that displays a monthly financial breakdown using pie graphs and explanatory information.
+ *
+ * @param formResults - The input data containing salary information and calculation parameters.
+ * @returns A ReactNode containing the monthly breakdown, two pie graphs (for minimum and maximum income),
+ *          mortgage cost details, a legend, and explanatory tooltips.
+ *
+ * @remarks
+ * - Calculates monthly mortgage cost and converts salary values based on the salary type (hourly or annual).
+ * - Assumes a default down payment of 20% of the house price.
+ * - Only mortgage cost is considered; other expenses like taxes and insurance are not included.
+ * - Hourly salary calculations assume 40 hours/week and 4 weeks/month.
+ */
 export default function GraphWrapper({ formResults }: formResultsProps): React.ReactNode {
   const monthlyCost = Tool.calculateMortgage(formResults);
   const minIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.minSalary) : Tool.annualToMonthly(formResults.minSalary);

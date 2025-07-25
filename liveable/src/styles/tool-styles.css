@@ -1,3 +1,10 @@
+/*
+  tool-styles.css
+
+  This stylesheet provides styles for a variety of UI components used in a tool or calculator web application.
+  It includes layout, form, input, button, tooltip, graph, and custom SVG/flower visualization styles.
+
+*/
 .tool-layout {
   display: flex;
   flex-direction: column;

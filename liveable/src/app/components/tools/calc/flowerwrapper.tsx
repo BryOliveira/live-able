@@ -3,6 +3,7 @@ import WiltingFlower from './svg/wiltingflower';
 import { QuestionIcon } from '@phosphor-icons/react';
 import { formResultsProps } from './graphwrapper';
 import * as Tool from '@/lib/utils/tools';
+import React from 'react';
 
 const colorStops = [
   { pct: .15, color: 'rgba(26, 150, 65, 1)' },
@@ -12,7 +13,20 @@ const colorStops = [
   { pct: .50, color: 'rgba(215, 25, 28, 1)'}
 ]
 
-export default function FlowerWrapper({ formResults }: formResultsProps) {
+/**
+ * FlowerWrapper component visualizes the liveability of a given salary range by displaying
+ * a flower graphic that scales and changes based on the percentage of income spent on housing costs.
+ * It compares both minimum and maximum salary scenarios, showing a healthy or wilting flower
+ * depending on whether the housing cost is within a "liveable" threshold.
+ *
+ * @param formResults - The input data containing salary information and calculation parameters.
+ * @returns A ReactNode displaying two flower graphics (for min and max salary) and a tooltip
+ *          explaining liveability categories.
+ *
+ *
+ * The component uses color interpolation and scaling to visually represent the liveability status.
+ */
+export default function FlowerWrapper({ formResults }: formResultsProps): React.ReactNode {
   const minIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.minSalary) : Tool.annualToMonthly(formResults.minSalary);
   const maxIncome = formResults.salaryType === 'hourly' ? Tool.hourlyToMonthly(formResults.maxSalary) : Tool.annualToMonthly(formResults.maxSalary);
   const monthlyCost = Tool.calculateMortgage(formResults);
@@ -31,6 +45,17 @@ export default function FlowerWrapper({ formResults }: formResultsProps) {
     }
   };
 
+  /**
+   * Renders a flower visualization and status text based on the given income percentage.
+   *
+   * The flower's appearance and scale are determined by the `percentIncome` value,
+   * indicating how "liveable" the user's financial situation is. The flower is healthy
+   * if `percentIncome` is below 0.28, otherwise a wilting flower is shown. The status
+   * text and its color are interpolated based on the percentage, using defined color stops.
+   *
+   * @param percentIncome - The percentage of income used, used to determine flower state, scale, and status.
+   * @returns A JSX element containing the flower visualization and a status text.
+   */
   const flowerDiv = (percentIncome: number) => {
     const isHealthy = percentIncome < 0.28;
     const scale = getFlowerScale(percentIncome, isHealthy);

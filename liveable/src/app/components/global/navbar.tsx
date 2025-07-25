@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+/**
+ * Renders the global navigation bar component for the application.
+ * 
+ * @returns The rendered NavBar component as a ReactNode.
+ */
 export default function Navbar(): React.ReactNode {
   return (
     <header>

@@ -5,6 +5,11 @@ import '@/styles/credit-styles.css';
 
 export const metadata: Metadata = { title: 'Credits' };
 
+/**
+ * Renders the Credits page for the application.
+ *
+ * @returns The rendered Credits page component as a ReactNode.
+ */
 export default function CreditsPage(): React.ReactNode {
   return (
     <div className='credits'>

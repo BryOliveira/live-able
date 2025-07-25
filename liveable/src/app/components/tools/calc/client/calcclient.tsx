@@ -16,6 +16,15 @@ const defaultValues = {
   interestRate: 6.8 // median us interest rate
 };
 
+/**
+ * React component for the client-side calculator tool.
+ *
+ * This component initializes form data from URL search parameters, applies default values,
+ * and manages form state for the calculator. 
+ * It renders the calculator form, a graph, and a flower visualization based on the current form data.
+ *
+ * @returns The rendered calculator client UI as a ReactNode.
+ */
 export default function CalcClient(): React.ReactNode {
   const searchParams = useSearchParams();
   const initialFormData: CalcForm = { ...defaultValues } as CalcForm;

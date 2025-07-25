@@ -1,4 +1,10 @@
 import * as React from "react";
+/**
+ * Renders an SVG illustration of a stylized flower.
+ *
+ * @param props - Standard SVG properties to customize the SVG element.
+ * @returns A React functional component displaying a flower SVG.
+ */
 const Flower = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width={89}

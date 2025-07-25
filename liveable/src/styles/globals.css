@@ -1,3 +1,48 @@
+/*
+  globals.css
+
+  This stylesheet defines the global styles and CSS variables for the application.
+
+  Variables:
+    --background: Main background color.
+    --foreground: Main text color.
+    --nav-background: Navigation bar background color.
+    --nav-foreground: Navigation bar text color.
+    --blue-accent: Primary blue accent color.
+    --blue-hover: Blue accent color for hover states.
+    --green-accent: Primary green accent color.
+    --green-hover: Green accent color for hover states.
+    --grayed-item: Gray color for disabled or less prominent items.
+    --gray-hover: Background color for hover states on gray items.
+    --font-sans: Main sans-serif font family.
+    --fade: Transition duration for interactive elements.
+
+  General Styles:
+    - Resets margin for all elements.
+    - Sets base font family, background, and text color for html and body.
+    - Ensures consistent font usage for input and button elements.
+
+  Form and Input Styles:
+    - Styles input fields for consistent sizing, padding, and focus state.
+    - Styles the search form container with border, shadow, and responsive width.
+    - Styles the search button with accent color, rounded corners, and hover effect.
+
+  Dropdown and Autocomplete:
+    - Styles dropdown menus and autocomplete suggestions with absolute positioning, background, border, and transitions.
+    - Provides hover and focus states for dropdown and autocomplete items.
+
+  Navigation and Footer:
+    - Styles navigation bar with flex layout, spacing, and link appearance.
+    - Adds hover effects for navigation and footer links.
+    - Styles header and footer backgrounds, spacing, and alignment.
+
+  Color Palette Reference:
+    - Light Blue: #5AA9E6
+    - White: #FBFEF9
+    - Sea Green: #0A8754
+    - Jet: #30323D
+    - Raisin Black: #242325
+*/
 :root {
   --background: #FBFEF9;
   --foreground: #0a0908;
@@ -12,14 +57,6 @@
   --font-sans: var(--font-afacad-flux);
   --fade: .2s;
 }
-
-/* 
-Light Blue: 5AA9E6
-White: FBFEF9 
-Sea Green: 0A8754
-Jet: 30323D
-Raisin Black: 242325
- */
 
 * {
   margin: 0;

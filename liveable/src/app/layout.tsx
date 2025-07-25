@@ -27,6 +27,12 @@ export const viewport: Viewport = {
   viewportFit: 'cover'
 };
 
+/**
+ * Root layout component for the application.
+ *
+ * @param props.children - The React nodes to be rendered within the layout.
+ * @returns The root layout structure including Analytics, Navbar, children, and Footer components.
+ */
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <>

@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Renders a legend for liveability categories based on the percentage of income spent.
+ *
+ * @returns The legend component for liveability categories as a ReactElement.
+ */
 export default function LegendComponent(): React.ReactElement {
   return (
     <span className='legend'>

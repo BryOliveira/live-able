@@ -1,3 +1,22 @@
+/*
+  job-styles.css
+
+  Styles for job listing and detail view components.
+
+  - .job-card: Styles for each job card in the listings, including layout, border, hover effects, and header styling.
+  - #listings: Container for job cards, with scrollable area and responsive width.
+  - .grayed, .greened: Utility classes for text color.
+  - #wrapper: Main layout wrapper with margin, border, flexbox, and responsive sizing.
+  - #job-view: Detail view area for selected job, with responsive width and margin.
+  - .job-header, .job-subheader: Flex containers for job headers and subheaders, with spacing and alignment.
+  - .desc p: Paragraph styling for job descriptions.
+  - #bar-wrapper: Centered flex container for action bar.
+  - .no-results, #no-job: Styles for empty state messages.
+  - #export: Button styling for export action, with hover and shadow effects.
+  - #tright: Vertical flex container for right-aligned elements.
+  - Responsive styles for screens <= 1024px and <= 768px, adjusting layout, font sizes, and container dimensions.
+*/
+
 .job-card {
   display: flex;
   border: solid var(--grayed-item);

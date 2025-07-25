@@ -4,11 +4,24 @@ import { CalcForm } from '@/lib/utils/forms';
 import { WarningIcon } from '@phosphor-icons/react';
 import { parseInputValue } from '@/lib/utils/tools';
 
+// Interface for TypeScript typing
 interface CalcFormProps {
   onSubmit: (data: CalcForm) => void;
   initialValues: CalcForm;
 }
 
+/**
+ * A React component that renders a calculator form for mortgage or affordability calculations.
+ * 
+ * @param onSubmit - Callback function invoked with the form data when the form is valid and submitted.
+ * @param initialValues - The initial values for the form fields.
+ * 
+ * @returns The calculator form UI as a ReactNode.
+ * 
+ * The form includes fields for home price, down payment, salary type, minimum and maximum salary,
+ * loan term, and interest rate. It performs validation on each field and displays error messages
+ * for invalid input. On successful validation, it calls the `onSubmit` callback with the form data.
+ */
 export default function CalcFormWrapper({ onSubmit, initialValues }: CalcFormProps): React.ReactNode {
   const [formData, setFormData] = useState<CalcForm>(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof CalcForm, string>>>({});

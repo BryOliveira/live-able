@@ -5,6 +5,11 @@ import Link from 'next/link';
 
 export const metadata: Metadata = { title: 'About Us' };
 
+/**
+ * Renders the About page for the application.
+ *
+ * @returns The rendered About page component as a ReactNode.
+ */
 export default function AboutPage(): React.ReactNode {
   return (
     <div className='about'>

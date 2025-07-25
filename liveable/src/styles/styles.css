@@ -1,3 +1,11 @@
+/*
+  styles.css
+
+  This stylesheet provides styles for the components unique to the home page of the site.
+  The hero is the eyecatch with the search bar and the banner is the group of icons below it.
+  The stylesheet also has media queries to accomodate smaller devices.
+*/
+
 #hero {
   background-color: var(--green-accent);
   padding: 15vh 0;
