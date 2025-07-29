@@ -32,19 +32,15 @@ export default function JobView({ job }: { job: Job | null }): React.ReactNode {
     <div id='job-view'>
       <div className='job-header'>
         <h1>{job.job_title}</h1>
-        <div id='tright'>
-          <button id='export' onClick={handleExport}>Calculate Liveability</button>
-          <p className='mobile'>{formatSalaryRange(job)}</p>
-        </div>
       </div>
       <div className='job-subheader'>
         <p><span className='greened'>Company:</span> {job.companies.company_name}</p>
         <p className='mobile'><span className='greened'>Sector:</span> {job.companies.sector}</p>
-      </div>
-      <div className='job-subheader'>
         <p><span className='greened'>Location:</span> {job.loc_city}, {job.loc_state}</p>
         <p className='mobile'><span className='greened'>State&apos;s Median House Price:</span> ${job.home_prices ? formatCurrency(job.home_prices.median_house_price) : 'N/A'}</p>
-      </div>
+        <p className='mobile'><span className='greened'>Salary Range:</span> {formatSalaryRange(job)}</p>
+        <button id='export' onClick={handleExport}>Calculate Liveability</button>
+        </div>
       <div className='desc'>
         <h2>Job Description:</h2>
         <p>{job.job_description}</p>

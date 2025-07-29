@@ -12,8 +12,8 @@ export default function JobCard({ job, onClick }: { job: Job, onClick?: () => vo
   return (
     <div className='job-card' onClick={onClick}>
       <div id='text'>
-        <h2>{job?.job_title}</h2>
-        <p className='grayed'>{job?.companies?.company_name}</p>
+        <h2>{job?.companies?.company_name}</h2>
+        <p className='grayed'>{job?.job_title}</p>
         <p><span className='greened'>{job?.loc_city}, {job?.loc_state}</span></p>
         <p>Average Salary: {formatSalary(job?.avg_salary, job?.is_hourly)}</p>
       </div>
