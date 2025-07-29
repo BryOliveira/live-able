@@ -27,7 +27,7 @@ export default function AboutPage(): React.ReactNode {
       <p>
         Though the app itself was functional, it lacked user-friendliness and required users
         to locally download the GitHub repo to access it. Wanting to improve both usability and accessibility, 
-        I also saw an opportunity to deepen my React skills. After learning that React Native had been deprecated, I pivoted to using <strong>Next.js </strong>
+        I also saw an opportunity to deepen my React skills. After learning that React Native docs themselves suggest using a framework, I pivoted to using <strong>Next.js </strong>
         for a modern web-app experience.
         <strong style={{ color: 'var(--green-accent)' }}> Liveable</strong> is the result of that.
         Beyond that, the back-end uses MySQL, Prisma was used to make a convenient ORM, the app was deployed with Vercel, and the icons used are open-source libraries.
