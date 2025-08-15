@@ -39,7 +39,7 @@ Hovering over each state gives you more income like the name of the state, the m
 The job listings are queried from a MySQL database and are not regularly updated as they were taken and pre-processed from a Kaggle dataset.
 The median house price is processed data from Zillow's public datasets on current house sale prices.
 
-Affor-db was co-created with [Felipe Cruz](https://github.com/PipeCruz), a fellow Caltech CS Undergrad minoring in Data Science.
+Affor-db, the sourced database, was co-created with [Felipe Cruz](https://github.com/PipeCruz), a fellow Caltech CS Undergrad minoring in Data Science.
 
 ## Contact <a name="contact"></a>
 If you wanna get in touch you can email me at [boliveir@caltech.edu](mailto:boliveir@caltech.edu).
