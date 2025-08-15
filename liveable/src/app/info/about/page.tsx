@@ -15,7 +15,7 @@ export default function AboutPage(): React.ReactNode {
     <div className='about'>
       <h1>About <s>Me</s> Us</h1>
       <p>
-        This entire site was a solo pet project made by me, <Link href='https://github.com/BryOliveira'>Bryan Oliveira</Link>, a Caltech CS Undergrad.
+        This entire site was a solo project made by me, <Link href='https://github.com/BryOliveira'>Bryan Oliveira</Link>, a Caltech CS Undergrad.
       </p>
       <p>
         In February 2025, I took a MySQL based Relational Databases course. For the final project, 
